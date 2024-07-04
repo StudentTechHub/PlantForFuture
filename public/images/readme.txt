@@ -1,0 +1,1 @@
+Store all Image files in public/images folder
