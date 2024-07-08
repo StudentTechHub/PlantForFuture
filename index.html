@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant for Future</title>
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script type="module" crossorigin src="/assets/index-C2PQRZtc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-7jqgQoET.css">
+</head>
+
+<body class="bg-blackPearl">
+
+  <!-- Navbar -->
+  <nav
+    class="fixed flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0">
+    <div class="hidden lg:block">
+      <ul class="lg:flex gap-8 justify-start items-center">
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#" aria-current="page">Home</a></li>
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#about">About</a></li>
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="flex justify-start lg:justify-center items-center text-2xl">
+      <img src="/logo.png" class="w-14" onClick="window.location.reload()" alt="logo" />
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger block lg:hidden cursor-pointer">
+      <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%23e8eaed'%3e%3cpath%20d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3e%3c/svg%3e" alt="menu">
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu  lg:hidden fixed top-20 left-full w-1/2 h-[calc(100vh-80px)] shadow-lg bg-blackPearl/90 backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
+      <div class="py-8 px-6 flex flex-col justify-between items-start h-full">
+        <ul class="flex flex-col gap-4 justify-center items-center">
+          <li><a href="#" class="text-lg">Home</a></li>
+          <li><a href="#about" class="text-lg">About</a></li>
+          <li><a href="#contact" class="text-lg">Contact Us</a></li>
+        </ul>
+        <div class="flex flex-col gap-4 justify-center">
+          <a href="./src/components/Login.html"><button
+              class="w-full py-1 px-6 border-2 border-green-400 rounded-md font-semibold text-green-400 hover:bg-green-400 hover:text-blackPearl transition-all duration-300 ease-in-out">
+              Login
+            </button></a>
+          <a href="">
+            <button
+              class="w-full py-1 px-6 border-2 border-primary-red-default text-primary-red-default rounded-md font-semibold hover:bg-primary-red-default hover:text-blackPearl transition-all duration-300 ease-in-out">
+              Donate
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="close-menu absolute top-4 right-4 cursor-pointer">
+      </div>
+    </div>
+    <!-- Mobile Menu End -->
+
+    <div class="lg:flex gap-8 justify-end items-center hidden">
+      <a href="./src/components/Login.html"><button
+          class="py-1 px-6 border-2 border-green-400 rounded-md font-semibold text-green-400 hover:bg-green-400 hover:text-blackPearl transition-all duration-300 ease-in-out">
+          Login
+        </button></a>
+      <a href="">
+        <button
+          class="py-1 px-6 border-2 border-primary-red-default text-primary-red-default rounded-md font-semibold hover:bg-primary-red-default hover:text-blackPearl transition-all duration-300 ease-in-out">
+          Donate
+        </button>
+      </a>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+  <div id="app" class="px-32 py-4 min-w-screen"></div>
+
+  <script src="./src/main.js"></script>
+</body>
+
+</html>
