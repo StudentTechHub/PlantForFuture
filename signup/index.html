@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/src/assets/styles/main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/public/main.css">
 </head>
 
 <body class="flex justify-center items-center min-h-screen font-poppins bg-cover bg-center bg-no-repeat"
-    style="background: url('../assets/images/LoginandSignupbg.jpg');">
+    style="background: url('/assets/images/LoginandSignupbg.jpg');">
     <div class="w-96 bg-transparent border-2 border-lightGray/30 backdrop-blur-lg text-light rounded-xl px-10 py-8">
         <div>
-            <h1 class="text-3xl text-center">Login</h1>
+            <h1 class="text-3xl text-center">Sign Up</h1>
             <form action="#">
+                <div class="relative w-full h-12 my-8 mx-0">
+                    <input type="test"
+                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
+                        placeholder="Username" required>
+                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-user'></i>
+                </div>
                 <div class="relative w-full h-12 my-8 mx-0">
                     <input type="email"
                         class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
@@ -30,17 +36,17 @@
 
 
                 <div class="flex justify-between font-base mx-0 -mt-4 mb-4">
-                    <label><input type="checkbox" class="accent-light mr-1">Remember me</label>
-                    <a href="#" class="text-light hover:underline">Forgot Password?</a>
+                    <label><input class="accent-light mr-1" type="checkbox">I agree to all terms and conditions</label>
 
                 </div>
 
                 <button type="submit"
-                    class="w-full h-12 bg-light outline-none rounded-full shadow-[0 0 10px rgba(0, 0, 0, -1)] cursor-pointer text-base text-[#333] font-semibold hover:bg-transparent hover:backdrop-blur-lg hover:border hover:border-light hover:text-light">Login</button>
+                    class="w-full h-12 bg-light outline-none rounded-full shadow-[0 0 10px rgba(0, 0, 0, -1)] cursor-pointer text-base text-[#333] font-semibold hover:bg-transparent hover:backdrop-blur-lg hover:border hover:border-light hover:text-light">Sign
+                    Up</button>
 
                 <div class="text-base text-center mx-0 my-5">
-                    <p>Don't have an account? <a href="./SignUp.html"
-                            class="text-light font-semibold no-underline hover:underline">Sign Up</a></p>
+                    <p>Already have a Account? <a href="/login/"
+                            class="text-light font-semibold no-underline hover:underline">Login</a></p>
                 </div>
 
             </form>

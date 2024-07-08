@@ -1,13 +1,48 @@
-const hamburger = document.querySelector(".hamburger");
-const mobileMenu = document.querySelector(".mobile-menu");
+// For routing purpose
+document.addEventListener("DOMContentLoaded", () => {
+  const navigateTo = (url) => {
+    history.pushState(null, null, url);
+    router();
+  };
 
-hamburger.addEventListener("click", () => {
-  const isMenuOpen = mobileMenu.classList.contains("-translate-x-full");
+  const router = async () => {
+    const routes = [
+      { path: "/home", view: async () => "Home Page" },
+      { path: "/about", view: async () => "About Page" },
+      { path: "/contact", view: async () => "Contact Page" },
+      { path: "/login", view: async () => await fetch("/login/index.html").then((res) => res.text())},
+      { path: "/signup", view: async () => await fetch("/signup/index.html").then((res) => res.text())},
+    ];
 
-  hamburger.querySelector("img").src = isMenuOpen
-    ? "/src/assets/images/svg/hamburger.svg"
-    : "/src/assets/images/svg/close.svg";
+    const potentialMatches = routes.map((route) => {
+      return {
+        route: route,
+        isMatch: location.pathname === route.path,
+      };
+    });
 
-  mobileMenu.classList.toggle("-translate-x-full");
-  mobileMenu.classList.toggle("-translate-x-0");
+    let match = potentialMatches.find(
+      (potentialMatch) => potentialMatch.isMatch
+    );
+
+    if (!match) {
+      match = {
+        route: routes[0],
+        isMatch: true,
+      };
+    }
+
+    document.querySelector("#app").innerHTML = await match.route.view();
+  };
+
+  window.addEventListener("popstate", router);
+
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
+
+  router();
 });
