@@ -1,4 +1,11 @@
 /* Main CSS file for global styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap&family=Poppins:wght@300;400;500;600;700&display=swap&family=Manrope:wght@200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
   margin: 0;
   padding: 0;
@@ -8,152 +15,22 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color:black;
+  background-color: black;
   padding: 20px;
 }
 
-header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 0;
-  text-align: center;
+/* Scrollbar */
+::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
 }
 
-header h1 {
-  margin-bottom: 10px;
-}
-  /* Navbar styling */
-  .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background-color: rgba(255, 255, 255, 0);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-  }
-
-  /* Logo styling */
-  .navbar .logo img {
-      height: 50px;
-  }
-  /* Navigation links styling */
-  .navbar .list {
-      flex-grow: 1;
-      margin-left: 2rem;
-  }
-
-  .navbar .list ul {
-      display: flex;
-      list-style: none;
-  }
-
-  .navbar .list ul li {
-      margin-left: 1.5rem;
-  }
-
-  .navbar .list ul li a {
-      text-decoration: none;
-      font-weight: bold;
-      position: relative;
-      color:white;
-  }
-  /* Underline hovering effect */
- .link::before{
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left:50%;
-  width:0;
-  height:2px;
-  background-color: white;
-  transition:0.3s;
- }
-.link:hover::before{
-  width:100%;
-  left:0;
-}
-  /* Buttons styling */
-  .navbar .buttons {
-      display: flex;
-      gap: 1rem;
-  }
-
-  .navbar .buttons button {
-      padding: 0.5rem 1rem;
-      color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      background: transparent;
-      border: 2px solid white;
-      transition: background 0.3s, color 0.3s;
-  }
-/* buttons hovering effec */
-  .navbar .buttons button:hover {
-      background: white;
-      color:black;
-  }
-  
-
-  /* Responsive styling */
-  @media (max-width: 768px) {
-      .navbar {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 1rem;
-      }
-
-      .navbar .list ul {
-          flex-direction: column;
-          margin-top: 1rem;
-      }
-
-      .navbar .list ul li {
-          margin-left: 0;
-          margin-top: 1rem;
-      }
-
-      .navbar .buttons {
-          margin-top: 1rem;
-          flex-direction: column;
-          width: 100%;
-          gap: 0.5rem;
-      }
-
-      .navbar .buttons button {
-          width: 100%;
-      }
-  }
-
-main {
-  margin: 20px 0;
+::-webkit-scrollbar-track{
+  background: transparent;
 }
 
-section {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-section h2 {
-  margin-bottom: 10px;
-  color: #4CAF50;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: 1px solid #ccc;
-}
-
-footer p {
-  color: #666;
+::-webkit-scrollbar-thumb{
+  background-color: #818c99;
+  border-radius: 1in;
+  cursor: pointer;
 }

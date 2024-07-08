@@ -1,1 +1,0 @@
-Store images used in your components
