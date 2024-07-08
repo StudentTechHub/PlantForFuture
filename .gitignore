@@ -31,7 +31,6 @@ yarn.lock
 
 # Other build and development files
 /build
-/public
 
 # Compiled output
 /dist
