@@ -2,39 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plant for Future</title>
-  <link rel="stylesheet" href="/src/assets/styles/main.css">
-  <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/src/assets/styles/main.css" />
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
 </head>
 
-<body>
-  <nav class="navbar">
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo">
-    </div>
-
-    <div class="list">
-      <ul>
-        <li><a href="#" class="link">Home</a></li>
-        <li><a href="#" class="link">About Us</a></li>
-        <li><a href="#" class="link">Contact</a></li>
+<body class="bg-blackPearl">
+  <!-- Navbar -->
+  <nav
+    class="fixed grid grid-flow-col grid-cols-3 items-center backdrop-blur-super bg-transparent text-light px-32 py-4 w-screen top-0">
+    <div class="">
+      <ul class="flex gap-8 justify-start items-center">
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#" aria-current="page">Home</a></li>
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#about">About</a></li>
+        <li><a
+            class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+            href="#contact">Contact Us</a></li>
       </ul>
     </div>
 
-    <div class="buttons">
-      <a href="./src/components/SignUp.html"><button class="signup">Sign Up</button></a>
-      <a href="./src/components/Login.html"><button class="signin">Sign In</button></a>
-      <button class="donate">Donate</button>
+    <div class="flex justify-center items-center text-2xl">
+      <img src="/logo.png" class="w-14" onClick="window.location.reload()" alt="logo" />
+    </div>
+
+    <div class="flex gap-8 justify-end items-center">
+      <a href="./src/components/Login.html"><button
+          class="py-1 px-6 border-2 border-green-400 rounded-md font-semibold text-green-400 hover:bg-green-400 hover:text-blackPearl transition-all duration-300 ease-in-out">
+          Login
+        </button></a>
+      <a href="">
+        <button
+          class="py-1 px-6 border-2 border-primary-red-default text-primary-red-default rounded-md font-semibold hover:bg-primary-red-default hover:text-blackPearl transition-all duration-300 ease-in-out">
+          Donate
+        </button>
+      </a>
     </div>
   </nav>
-
-
-  <div id="app">
-
-
-  </div>
+  <!-- Navbar End -->
+  <div id="app" class="px-32 py-4 min-w-screen"></div>
 
   <script type="module" src="/src/assets/scripts/main.js"></script>
 </body>

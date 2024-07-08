@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/public/css/LoginandSignup.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/src/assets/styles/LoginandSignup.css">
+    <link rel="stylesheet" href="/src/assets/styles/main.css">
 </head>
-<body>
-    <div class="container">
-        <div class="form-box register">
-            <h1>Sign Up</h1>
+
+<body class="flex justify-center items-center min-h-screen font-poppins bg-cover bg-center bg-no-repeat"
+    style="background: url('../assets/images/LoginandSignupbg.jpg');">
+    <div class="w-96 bg-transparent border-2 border-lightGray/30 backdrop-blur-lg text-light rounded-xl px-10 py-8">
+        <div>
+            <h1 class="text-3xl text-center">Sign Up</h1>
             <form action="#">
-                <div class="input-box">
-                    <input type="test" placeholder="Username" required>
-                    <i class='bx bxs-user'></i>
+                <div class="relative w-full h-12 my-8 mx-0">
+                    <input type="test"
+                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
+                        placeholder="Username" required>
+                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-user'></i>
                 </div>
-                <div class="input-box">
-                    <input type="email" placeholder="Email id" required>
-                    <i class='bx bxs-envelope' ></i>
+                <div class="relative w-full h-12 my-8 mx-0">
+                    <input type="email"
+                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
+                        placeholder="Email id" required>
+                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-envelope'></i>
                 </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                    <i class='bx bxs-lock-alt' ></i>
+                <div class="relative w-full h-12 my-8 mx-0">
+                    <input type="password"
+                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
+                        placeholder="Password" required>
+                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-lock-alt'></i>
                 </div>
 
 
-                <div class="remember-forgot">
-                    <label><input type="checkbox">I agree to all terms and conditions</label>
-                    
+                <div class="flex justify-between font-base mx-0 -mt-4 mb-4">
+                    <label><input class="accent-light mr-1" type="checkbox">I agree to all terms and conditions</label>
+
                 </div>
 
-                <button type="submit" class="btn">Sign Up</button>
+                <button type="submit"
+                    class="w-full h-12 bg-light outline-none rounded-full shadow-[0 0 10px rgba(0, 0, 0, -1)] cursor-pointer text-base text-[#333] font-semibold hover:bg-transparent hover:backdrop-blur-lg hover:border hover:border-light hover:text-light">Sign
+                    Up</button>
 
-                <div class="register-link">
-                    <p>Don't have an account? <a href="login.html">Login</a></p>
+                <div class="text-base text-center mx-0 my-5">
+                    <p>Already have a Account? <a href="Login.html"
+                            class="text-light font-semibold no-underline hover:underline">Login</a></p>
                 </div>
-                
-                
-                
+
             </form>
 
-    </div>
-    
+        </div>
+
 </body>
+
 </html>
