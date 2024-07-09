@@ -2,51 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/public/main.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/public/main.css">
 </head>
 
-<body class="flex justify-center items-center min-h-screen font-poppins bg-cover bg-center bg-no-repeat"
-    style="background: url('/assets/images/LoginandSignupbg.jpg');">
-    <div class="w-96 bg-transparent border-2 border-lightGray/30 backdrop-blur-lg text-light rounded-xl px-10 py-8">
-        <div>
-            <h1 class="text-3xl text-center">Login</h1>
-            <form action="#">
-                <div class="relative w-full h-12 my-8 mx-0">
-                    <input type="email"
-                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
-                        placeholder="Email id" required>
-                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-envelope'></i>
-                </div>
-                <div class="relative w-full h-12 my-8 mx-0">
-                    <input type="password"
-                        class="w-full h-full bg-transparent placeholder-light outline-none border border-lightGray/40 rounded-full text-base text-light py-5 pr-12 pl-5"
-                        placeholder="Password" required>
-                    <i class='absolute right-5 top-1/2 -translate-y-1/2 text-xl bx bxs-lock-alt'></i>
-                </div>
-
-
-                <div class="flex justify-between font-base mx-0 -mt-4 mb-4">
-                    <label><input type="checkbox" class="accent-light mr-1">Remember me</label>
-                    <a href="#" class="text-light hover:underline">Forgot Password?</a>
-
-                </div>
-
-                <button type="submit"
-                    class="w-full h-12 bg-light outline-none rounded-full shadow-[0 0 10px rgba(0, 0, 0, -1)] cursor-pointer text-base text-[#333] font-semibold hover:bg-transparent hover:backdrop-blur-lg hover:border hover:border-light hover:text-light">Login</button>
-
-                <div class="text-base text-center mx-0 my-5">
-                    <p>Don't have an account? <a href="/signup/"
-                            class="text-light font-semibold no-underline hover:underline">Sign Up</a></p>
-                </div>
-
-            </form>
-
+<body class="flex justify-center items-center min-h-screen bg-blackPearl font-manrope">
+  <div class="flex flex-col justify-center items-center min-w-full min-h-[100vh] sm:min-w-[calc(100vw-60px)] sm:min-h-[calc(100vh-60px)] bg-[url('/assets/images/LoginandSignupbg-1.jpg')]  bg-no-repeat bg-center bg-cover rounded-none sm:rounded-xl">
+    <div class="w-10/12 md:w-2/3 lg:1/2 bg-blackPearl shadow-black shadow-2xl text-light rounded-xl px-10 py-8 sm:py-6 lg:py-8">
+      <div>
+        <div class="flex flex-col text-center items-center">
+          <img src="../public/logo.png" class="w-16" alt="">
+          <h1 class="text-xl mt-4 font-semibold">Welcome Back</h1>
+          <p class="text-lightGray text-sm">Please fill out the fields to Log in.</p>
         </div>
+        <form action="#" class="mt-6 flex flex-col gap-8">
 
+          <div class="w-full h-12 flex flex-col gap-[2px]">
+            <label for="email" class="text-light text-sm">E-Mail Address</label>
+            <input id="email" type="email"
+              class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              placeholder="Enter your email..." required>
+          </div>
+          <div class=" w-full h-12 relative flex flex-col gap-[2px]">
+            <label for="password" class="text-light text-sm">Password</label>
+            <input id="password" type="password"
+              class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border border-lightGray/40 rounded-lg sm:text-base text-light py-5 pr-12 pl-5"
+              placeholder="Password" required>
+            <div class="absolute top-1/2 -translate-y-1/2 right-5 mt-6">
+              <img src="/public/assets/images/svg/visibility_off.svg" class="eye-button cursor-pointer h-5 w-5"
+                alt="eyeButton">
+            </div>
+          </div>
+
+          <div class="flex justify-between text-xs sm:text-base">
+            <div class="flex gap-2 select-none justify-end">
+              <input id="remember" type="checkbox">
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="/forgot-password/"
+              class="text-lightGray font-semibold no-underline hover:underline">Forgot
+              Password?</a>
+          </div>
+
+
+          <button type="submit"
+            class="w-full h-12 mt-2 bg-green-400/30 outline-none rounded-lg cursor-pointer text-base text-green-400 font-semibold">Log
+            in</button>
+
+          <div class="text-sm sm:text-base -mt-4 text-center">
+            <p>Don't have an account yet? <a href="/signup/"
+                class="text-light font-semibold no-underline hover:underline">Sign up</a>
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <p class="text-blackPearl text-sm sm:text-base text-center mt-6">By signing up you agree to our <a href=""><span
+          class="font-semibold hover:underline">Terms and
+          Condition</span></a></p>
+  </div>
+
+  <script type="module" src="./index.js" async defer></script>
 </body>
 
 </html>
