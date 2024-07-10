@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="/public/main.css">
+  <title>Creator | Log in</title>
 </head>
 
 <body class="flex justify-center items-center min-h-screen bg-blackPearl font-manrope">
@@ -13,17 +14,17 @@
     <div class="w-10/12 md:w-2/3 lg:1/2 bg-blackPearl shadow-black shadow-2xl text-light rounded-xl px-10 py-8 sm:py-6 lg:py-8">
       <div>
         <div class="flex flex-col text-center items-center">
-          <img src="../public/logo.png" class="w-16" alt="">
+          <img src="/public/logo.png" class="w-16" alt="">
           <h1 class="text-xl mt-4 font-semibold">Welcome Back</h1>
           <p class="text-lightGray text-sm">Please fill out the fields to Log in.</p>
         </div>
         <form action="#" class="mt-6 flex flex-col gap-8">
 
           <div class="w-full h-12 flex flex-col gap-[2px]">
-            <label for="email" class="text-light text-sm">E-Mail Address</label>
-            <input id="email" type="email"
+            <label for="username" class="text-light text-sm">Username</label>
+            <input id="username" type="text"
               class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-              placeholder="Enter your email..." required>
+              placeholder="Username" required>
           </div>
           <div class=" w-full h-12 relative flex flex-col gap-[2px]">
             <label for="password" class="text-light text-sm">Password</label>
@@ -52,7 +53,7 @@
             in</button>
 
           <div class="text-sm sm:text-base -mt-4 text-center">
-            <p>Don't have an account yet? <a href="/signup/"
+            <p>Don't have an account yet? <a href="../creatorSignup/"
                 class="text-light font-semibold no-underline hover:underline">Sign up</a>
             </p>
           </div>

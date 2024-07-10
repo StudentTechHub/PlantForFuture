@@ -13,8 +13,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        login: resolve(__dirname, "login/index.html"),
-        signup: resolve(__dirname, "signup/index.html"),
+        joinUs: resolve(__dirname, "joinUs/index.html"),
+        volunteerLogin: resolve(__dirname, "joinUs/volunteer/volunteerLogin/index.html"),
+        volunteerSignup: resolve(__dirname, "joinUs/volunteer/volunteerSignup/index.html"),
+        creatorLogin: resolve(__dirname, "joinUs/creator/creatorLogin/index.html"),
+        creatorSignup: resolve(__dirname, "joinUs/creator/creatorSignup/index.html"),
       },
     },
   },
