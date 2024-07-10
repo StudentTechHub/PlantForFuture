@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Volunteer | Sign up</title>
+  <link rel="shortcut icon" href="/public/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="/public/main.css">
 </head>
 
@@ -19,7 +20,7 @@
           <h1 class="text-xl mt-4 text-center font-semibold">Create Account</h1>
           <p class="text-lightGray text-center text-sm">Please fill out the fields to sign up.</p>
         </div>
-        <form action="#" class="mt-6 flex flex-col gap-8">
+        <form class="mt-6 flex flex-col gap-8">
           <div class="flex gap-4 sm:gap-8">
             <div class="h-12 w-full gap-8">
               <label for="username">Username</label>
@@ -28,8 +29,8 @@
                 placeholder="Username" required>
             </div>
             <div class="h-12 w-full gap-8">
-              <label for="fName">Full Name</label>
-              <input id="fName" type="text"
+              <label for="fullName">Full Name</label>
+              <input id="fullName" type="text"
                 class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
                 placeholder="Full Name" required>
 
@@ -53,8 +54,8 @@
               </div>
             </div>
             <div class=" w-full flex relative flex-col gap-[2px] h-12">
-              <label for="re-type" class="text-light text-sm">Re-Type Password</label>
-              <input id="re-type" type="password"
+              <label for="confirmPassword" class="text-light text-sm">Re-Type Password</label>
+              <input id="confirmPassword" type="password"
                 class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border border-lightGray/40 rounded-lg sm:text-base text-light py-5 pr-12 pl-5"
                 placeholder="Re-type password" required>
               <div class="absolute top-1/2 -translate-y-1/2 right-5 mt-6">
@@ -84,6 +85,7 @@
   </div>
 
   <script type="module" src="./index.js" async defer></script>
+
 </body>
 
 </html>
