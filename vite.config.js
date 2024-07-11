@@ -18,6 +18,8 @@ export default defineConfig({
         volunteerSignup: resolve(__dirname, "joinUs/volunteer/volunteerSignup/index.html"),
         creatorLogin: resolve(__dirname, "joinUs/creator/creatorLogin/index.html"),
         creatorSignup: resolve(__dirname, "joinUs/creator/creatorSignup/index.html"),
+        volunteerDashboard: resolve(__dirname, "src/dashboard/volunteerDashboard/index.html"),
+        creatorDashboard: resolve(__dirname, "src/dashboard/creatorDashboard/index.html"),
       },
     },
   },
@@ -27,7 +29,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "http://localhost:3001",
+        target: "https://plantforfuture-0aad8652667a.herokuapp.com/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
       },

@@ -8,17 +8,15 @@ const username = document.querySelector("#username");
 const form = document.querySelector("form");
 const inputs = [...form.querySelectorAll("input")];
 
-
-
 // Handle Password Visibility
 visibility.forEach((visibilityButton, index) => {
   visibilityButton.addEventListener("click", () => {
     const type =
-    password[index].getAttribute("type") === "password" ? "text" : "password";
+      password[index].getAttribute("type") === "password" ? "text" : "password";
     visibilityButton.src =
-    type === "password"
-    ? "/assets/images/svg/visibility_off.svg"
-    : "/assets/images/svg/visibility.svg";
+      type === "password"
+        ? "/assets/images/svg/visibility_off.svg"
+        : "/assets/images/svg/visibility.svg";
     password[index].setAttribute("type", type);
   });
 });
@@ -26,23 +24,36 @@ visibility.forEach((visibilityButton, index) => {
 // POST request to create a new user
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  
+
   username.value = username.value.toLowerCase();
-  
-  if (!inputs.every((input) => {
-    return validateForm(input);
-  })) return;
+
+  if (
+    !inputs.every((input) => {
+      return validateForm(input);
+    })
+  )
+    return;
 
   fetch("/api/v1/creator/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(
-      inputs.reduce((acc, input) => {
-        acc[input.id] = input.value.replace(/\s/g, "");
-        return acc;
-      }, {})
-    ),
-  });
+    body: JSON.stringify({
+      username: username.value,
+      fullName: inputs[1].value,
+      email: inputs[2].value,
+      gender: inputs[3].checked
+        ? "male"
+        : inputs[4].checked
+        ? "female"
+        : "other",
+      password: inputs[5].value,
+      confirmPassword: inputs[6].value,
+    }),
+  }).then((res) =>
+    res.ok
+      ? (window.location.href = "/joinUs/creator/creatorLogin/")
+      : alert("Username or email already exists")
+  );
 });

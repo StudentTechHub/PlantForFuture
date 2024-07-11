@@ -36,13 +36,28 @@
 
             </div>
           </div>
-          <div class="w-full h-12 flex flex-col gap-[2px]">
-            <label for="email" class="text-light text-sm">E-Mail Address</label>
-            <input id="email" type="email"
-              class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-              placeholder="Enter your email..." required>
-          </div>
           <div class="flex flex-col sm:flex-row gap-8">
+            <div class="w-full h-12 flex flex-col gap-[2px]">
+              <label for="email" class="text-light text-sm">E-Mail Address</label>
+              <input id="email" type="email"
+                class="w-full h-full text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+                placeholder="Enter your email..." required>
+            </div>
+            <div class="w-full flex flex-col gap-[2px]">
+              <label for="gender" class="text-light text-sm">Gender</label>
+              <div class="flex h-12 gap-4 pl-5 items-center justify-start border-2 border-lightGray/30 rounded-lg">
+                <p class="flex gap-2 justify-center items-center">
+                  <input id="male" type="radio" name="radio-group" required><label class="text-light/30"
+                    for="male">Male</label>
+                </p>
+                <p class="flex gap-2 justify-center items-center">
+                  <input id="female" type="radio" name="radio-group" required><label class="text-light/30"
+                    for="female">Female</label>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-8 -mt-6">
             <div class=" w-full h-12 relative flex flex-col gap-[2px]">
               <label for="password" class="text-light text-sm">Password</label>
               <input id="password" type="password"
@@ -66,7 +81,7 @@
           </div>
 
           <button type="submit"
-            class="w-full h-12 mt-2 bg-green-400/30 outline-none rounded-lg cursor-pointer text-base text-green-400 font-semibold">Sign
+            class="w-full h-12 mt-2 bg-green-400/30 outline-none rounded-lg cursor-pointer text-base text-green-400 font-bold">Sign
             up</button>
 
           <div class="text-sm sm:text-base -mt-4 text-center">

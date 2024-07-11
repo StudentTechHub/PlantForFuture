@@ -21,29 +21,47 @@ visibility.forEach((visibilityButton, index) => {
 });
 
 // POST request to Log in a user
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  const username = document.querySelector("#username");
   username.value = username.value.toLowerCase();
 
-  if (
-    !inputs.every((input) => {
-      return validateForm(input);
-    })
-  )
-    return;
+  if (!inputs.every((input) => validateForm(input))) return;
 
-  fetch("/api/v1/volunteer/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(
-      inputs.reduce((acc, input) => {
-        acc[input.id] = input.value.replace(/\s/g, "");
-        return acc;
-      }, {})
-    ),
-  });
+  try {
+    const response = await fetch("/api/v1/volunteer/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        inputs.reduce((acc, input) => {
+          acc[input.id] = input.value.replace(/\s/g, "");
+          return acc;
+        }, {})
+      ),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        "Login failed. Please check your credentials and try again."
+      );
+    } else {
+      window.location.href = "/src/dashboard/volunteerDashboard/";
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    const errorMessage = document.querySelector("#error-message");
+    if (errorMessage) {
+      errorMessage.textContent = error.message;
+      errorMessage.style.display = "block";
+    } else {
+      const newErrorMessage = document.createElement("div");
+      newErrorMessage.id = "error-message";
+      newErrorMessage.textContent = error.message;
+      newErrorMessage.style.color = "red";
+      form.appendChild(newErrorMessage);
+    }
+  }
 });
-

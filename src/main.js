@@ -5,3 +5,4 @@ hamburger.addEventListener("click", () => {
   mobileMenu.classList.toggle("-translate-x-full");
   mobileMenu.classList.toggle("-translate-x-0");
 });
+
