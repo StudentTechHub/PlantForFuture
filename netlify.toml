@@ -1,10 +1,12 @@
-[[redirects]]
-  from = "/api/*"
-  to = "${API_URL}/:splat"
-  status = 200
-  force = true
+[dev]
+  targetPort = 8080
 
 [build]
   command = "npm run build"
   publish = "dist"
-  environment = { API_URL = "https://plantforfuture-0aad8652667a.herokuapp.com" }
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://plantforfuture-0aad8652667a.herokuapp.com/:splat"
+  status = 200
+  force = true
