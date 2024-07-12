@@ -3,3 +3,8 @@
   to = "${API_URL}/:splat"
   status = 200
   force = true
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  environment = { API_URL = "https://plantforfuture-0aad8652667a.herokuapp.com" }

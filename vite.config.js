@@ -30,7 +30,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: import.meta.env.API_URL,
+        target: import.meta.env.VITE_API_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
       },
