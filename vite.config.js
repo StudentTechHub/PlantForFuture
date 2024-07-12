@@ -30,7 +30,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: "https://plantforfuture-0aad8652667a.herokuapp.com/",
+        target: import.meta.env.API_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
       },

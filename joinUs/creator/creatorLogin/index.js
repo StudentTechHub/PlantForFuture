@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
   if (!inputs.every((input) => validateForm(input))) return;
 
   try {
-    const response = await fetch("/api/v1/creator/login", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/creator/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

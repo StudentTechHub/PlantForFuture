@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/api/v1/volunteer/me", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/volunteer/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Logout
     document.querySelector("#logout").addEventListener("click", async () => {
       try {
-        const response = await fetch("/api/v1/volunteer/logout", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/volunteer/logout`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
