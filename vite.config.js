@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         joinUs: resolve(__dirname, "joinUs/index.html"),
+        settings: resolve(__dirname, "src/dashboard/settings/index.html"),
         volunteerLogin: resolve(__dirname, "joinUs/volunteer/volunteerLogin/index.html"),
         volunteerSignup: resolve(__dirname, "joinUs/volunteer/volunteerSignup/index.html"),
         creatorLogin: resolve(__dirname, "joinUs/creator/creatorLogin/index.html"),
