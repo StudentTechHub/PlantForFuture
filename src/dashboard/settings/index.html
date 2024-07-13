@@ -93,10 +93,84 @@
     </div>
   </nav>
   <!-- Navbar End -->
-  <div id="settings" class="mt-24 px-32 min-w-screen">
-    <div class="text-center text-xl text-light" id="user-info">
-      
+  <div id="settings" class="mt-20 px-10 min-w-screen">
+    <div class="text-left text-2xl text-light" id="user-info">
+      Personal Info
+        </div>
+        <p class="text-lightGray">Update your photo and personal info here</p>
+      </div>
     </div>
+    <hr class="mt-6 border-t-4  border-lightGray/30">
+    <div class="flex">
+      <div class="w-1/2">
+        <div class="text-left text-2xl text-light mt-6 px-10">
+          Basic Information
+        </div>
+        <p class="text-lightGray px-10">Update your Basic Information here</p>
+      </div>
+      <div class="w-1/2 pr-4">
+       <div id="image" class="flex mt-6">
+       <div>
+        <p class="text-lightGray pb-2 text-base">Profile Image</p>
+        <img src="" alt="User image" class="w-24 h-24 border-2  border-lightGray/30 rounded-md  bg-light/10" />
+       </div>
+       <div class="mt-10">
+        <input type="image" id="upload" class="hidden">
+        <label for="upload" class="ml-4 bg-transparent border-2  border-lightGray/30 text-white py-2 px-6 rounded-md">Upload</label>
+          <p class="text-lightGray ml-4 mt-2">Recommended size is 512x512px</p>
+       </div>
+       </div>
+       <div class="flex mt-2 gap-4">
+        <div class="h-12 w-full gap-8">
+          <label for="firstname" class="mb-2  text-light">First Name</label>
+          <input id="firstname" type="text"
+            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+            placeholder="John">
+        </div>
+        <div class="h-12 w-full gap-8">
+          <label for="lastname" class="text-light">Lastname</label>
+          <input id="lastname" type="text"
+            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+            placeholder="lastname">
+        </div>
+      </div>
+      <div class="h-12 w-full mt-8 gap-8">
+        <label for="email" class="text-light">Email</label>
+        <input id="email" type="text"
+          class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5 mr-4"
+          placeholder="email">
+      </div>
+      </div>
+    </div>
+    <hr class="mt-14 border-t-4  border-lightGray/30">
+    <div class="flex mt-6">
+      <div class="w-1/2">
+        <div class="text-left text-2xl text-light px-10">
+          Update Password
+        </div>
+        <p class="text-lightGray px-10">Feeling insecure? change your password</p>
+      </div>
+      <div class="w-1/2 pr-4">
+        <div class="h-12 w-full gap-8">
+          <label for="oldpassword" class="text-light">Old Password</label>
+          <input id="oldpassword" type="password"
+            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+            placeholder="Oldpassword">
+        </div>
+        <div class="flex gap-4 mt-8">
+          <div class="h-12 w-full gap-8">
+            <label for="newpassword" class="mb-2  text-light">New password</label>
+            <input id="newpassword" type="password"
+              class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              placeholder="John">
+          </div>
+          <div class="h-12 w-full gap-8">
+            <label for="confirm" class="text-light">Re-type New password</label>
+            <input id="confirm" type="password"
+              class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              placeholder="Doe">
+          </div>
+        </div>
   </div>
 </body>
 
