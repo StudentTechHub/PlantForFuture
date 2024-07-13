@@ -30,7 +30,7 @@ export default defineConfig({
     open: true,
     proxy: {
       "/api": {
-        target: process.env.VITE_API_URL,
+        target: "https://plantforfuture-0aad8652667a.herokuapp.com/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
       },

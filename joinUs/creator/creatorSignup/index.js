@@ -34,7 +34,7 @@ form.addEventListener("submit", (e) => {
   )
     return;
 
-  fetch(`${import.meta.env.VITE_API_URL}/api/v1/creator/register`, {
+  fetch(`/api/v1/creator/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
