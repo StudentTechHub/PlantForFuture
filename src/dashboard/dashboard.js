@@ -8,10 +8,10 @@ if (document.cookie !== null && document.cookie !== undefined) {
     return acc;
   }, {});
 
-  if (!cookieObj["token"]) {
+  if (!cookieObj["_volunteer_token"]) {
     window.location.href = "/joinUs/";
   }
-  else if (cookieObj["creatorToken"]) {
+  else if (cookieObj["_creator_token"]) {
     window.location.href = "/src/dashboard/creatorDashboard/";
   }
 }
