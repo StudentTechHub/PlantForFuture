@@ -93,85 +93,150 @@
     </div>
   </nav>
   <!-- Navbar End -->
-  <div id="settings" class="mt-20 px-10 min-w-screen">
-    <div class="text-left text-2xl text-light" id="user-info">
-      Personal Info
-        </div>
-        <p class="text-lightGray">Update your photo and personal info here</p>
+  <div id="settings" class="mt-28 px-10 sm:px-16 md:px-28 lg:px-32 font-manrope min-w-screen">
+    <div class="flex flex-col gap-2 text-left text-2xl text-light" id="user-info">
+      <div class="flex flex-col gap-2">
+        <p class="text-2xl sm:text-3xl font-medium">Settings</p>
+        <p class="text-xs sm:text-base text-lightGray">Manage your account settings and preferences</p>
       </div>
-    </div>
-    <hr class="mt-6 border-t-4  border-lightGray/30">
-    <div class="flex">
-      <div class="w-1/2">
-        <div class="text-left text-2xl text-light mt-6 px-10">
-          Basic Information
+      <p class="h-[2px] w-full bg-light/5 my-4"></p>
+      <div class="flex flex-col md:flex-row justify-between h-fit">
+        <div class="flex flex-col gap-1 sm:gap-2">
+          <p class="text-lg sm:text-xl font-medium">Basic Information</p>
+          <p class="text-xs sm:text-sm text-lightGray">Change the basic details of your account</p>
         </div>
-        <p class="text-lightGray px-10">Update your Basic Information here</p>
-      </div>
-      <div class="w-1/2 pr-4">
-       <div id="image" class="flex mt-6">
-       <div>
-        <p class="text-lightGray pb-2 text-base">Profile Image</p>
-        <img src="" alt="User image" class="w-24 h-24 border-2  border-lightGray/30 rounded-md  bg-light/10" />
-       </div>
-       <div class="mt-10">
-        <input type="image" id="upload" class="hidden">
-        <label for="upload" class="ml-4 bg-transparent border-2  border-lightGray/30 text-white py-2 px-6 rounded-md">Upload</label>
-          <p class="text-lightGray ml-4 mt-2">Recommended size is 512x512px</p>
-       </div>
-       </div>
-       <div class="flex mt-2 gap-4">
-        <div class="h-12 w-full gap-8">
-          <label for="firstname" class="mb-2  text-light">First Name</label>
-          <input id="firstname" type="text"
-            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-            placeholder="John">
-        </div>
-        <div class="h-12 w-full gap-8">
-          <label for="lastname" class="text-light">Lastname</label>
-          <input id="lastname" type="text"
-            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-            placeholder="lastname">
-        </div>
-      </div>
-      <div class="h-12 w-full mt-8 gap-8">
-        <label for="email" class="text-light">Email</label>
-        <input id="email" type="text"
-          class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5 mr-4"
-          placeholder="email">
-      </div>
-      </div>
-    </div>
-    <hr class="mt-14 border-t-4  border-lightGray/30">
-    <div class="flex mt-6">
-      <div class="w-1/2">
-        <div class="text-left text-2xl text-light px-10">
-          Update Password
-        </div>
-        <p class="text-lightGray px-10">Feeling insecure? change your password</p>
-      </div>
-      <div class="w-1/2 pr-4">
-        <div class="h-12 w-full gap-8">
-          <label for="oldpassword" class="text-light">Old Password</label>
-          <input id="oldpassword" type="password"
-            class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-            placeholder="Oldpassword">
-        </div>
-        <div class="flex gap-4 mt-8">
-          <div class="h-12 w-full gap-8">
-            <label for="newpassword" class="mb-2  text-light">New password</label>
-            <input id="newpassword" type="password"
-              class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-              placeholder="John">
+        <div class="flex flex-col gap-4 w-full mt-4 md:mt-0 md:w-1/2">
+          <!-- Image Section -->
+          <div class="flex flex-col items-start">
+            <span class="text-light text-sm sm:text-base mb-2">Profile Image</span>
+            <div class="flex flex-nowrap gap-4">
+              <div class="border-2 overflow-hidden border-lightGray rounded-lg bg-lightGray/20
+                w-full max-h-20 h-20 max-w-20">
+                <img src="" alt="preview" />
+              </div>
+              <div class="flex flex-col gap-2 flex-nowrap">
+                <Button
+                  class="bg-transparent text-base sm:text-lg border-2 border-lightGray rounded-md px-2 md:px-5 py-2 w-3/5 text-light">
+                  Upload
+                </Button>
+                <span class="text-lightGray text-xs sm:text-sm">
+                  Recommended size is 512x512px
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="h-12 w-full gap-8">
-            <label for="confirm" class="text-light">Re-type New password</label>
-            <input id="confirm" type="password"
-              class="w-full h-full text-sm bg-light/10 placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
-              placeholder="Doe">
+
+          <!-- Name & Email Section -->
+          <div class="flex flex-col gap-4">
+            <div class="flex gap-4">
+              <div class="w-full gap-8">
+                <label for="firstName" class="text-sm">First Name</label>
+                <input id="firstName" type="text"
+                  class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+                  placeholder="John" required>
+              </div>
+              <div class="w-full gap-8">
+                <label for="fullName" class="text-sm">Last Name</label>
+                <input id="lastName" type="text"
+                  class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+                  placeholder="Doe" required>
+              </div>
+            </div>
+            <div class="w-full flex flex-col gap-[2px]">
+              <label for="email" class="text-light text-sm">E-Mail</label>
+              <input id="email" type="email"
+                class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+                placeholder="johndoe@example.com" required>
+            </div>
           </div>
         </div>
-  </div>
+      </div>
+
+      <p class="h-[2px] w-full bg-light/5 my-4"></p>
+      <!-- Password Section -->
+      <div class="flex flex-col md:flex-row justify-between w-full">
+        <div class="flex flex-col gap-1 sm:gap-2">
+          <p class="text-lg sm:text-xl font-medium">Update Password</p>
+          <p class="text-sm text-lightGray">Feeling insecure? Change your password</p>
+        </div>
+
+        <div class="flex flex-col mt-4 md:mt-0 gap-4 w-full md:w-1/2">
+          <div class=" w-full relative flex flex-col gap-[2px]">
+            <label for="oldPassword" class="text-light text-sm">Old Password</label>
+            <input id="oldPassword" type="password"
+              class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/40 rounded-lg sm:text-base text-light py-5 pr-12 pl-5"
+              placeholder="Old Password" required>
+            <div class="absolute bottom-1/2 translate-y-full right-5 ">
+              <img src="/public/assets/images/svg/visibility_off.svg" class="eye-button cursor-pointer h-5 w-5"
+                alt="eyeButton">
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class=" w-full relative flex flex-col gap-[2px]">
+              <label for="newPassword" class="text-light text-sm">New Password</label>
+              <input id="newPassword" type="password"
+                class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/40 rounded-lg sm:text-base text-light py-5 pr-12 pl-5"
+                placeholder="New Password" required>
+              <div class="absolute bottom-1/2 translate-y-full right-5 ">
+                <img src="/public/assets/images/svg/visibility_off.svg" class="eye-button cursor-pointer h-5 w-5"
+                  alt="eyeButton">
+              </div>
+            </div>
+            <div class=" w-full flex relative flex-col gap-[2px]">
+              <label for="confirmPassword" class="text-light text-sm">Re-Type Password</label>
+              <input id="confirmPassword" type="password"
+                class="w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/40 rounded-lg sm:text-base text-light py-5 pr-12 pl-5"
+                placeholder="Re-type password" required>
+              <div class="absolute bottom-1/2 translate-y-full right-5 ">
+                <img src="/public/assets/images/svg/visibility_off.svg" class="eye-button cursor-pointer h-5 w-5"
+                  alt="eyeButton">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="h-[2px] w-full bg-light/5 my-4"></p>
+      <!-- Privacy Section -->
+      <div class="flex flex-col md:flex-row justify-between w-full mb-6">
+        <div class="flex flex-col gap-1 sm:gap-2">
+          <p class="text-lg sm:text-xl font-medium">Privacy Options</p>
+          <p class="text-sm text-lightGray">Control the data you've provided us</p>
+        </div>
+
+        <div class="flex flex-col mt-4 md:mt-0 gap-4 w-full md:w-1/2">
+          <div class="flex flex-wrap lg:flex-nowrap justify-between">
+            <div class="flex flex-col">
+              <p class="text-sm sm:text-base font-medium">Download Data</p>
+              <p class="text-xs text-lightGray">Request a copy of all the data we have about you</p>
+            </div>
+            <div>
+              <a href="#"
+                class="relative mt-4 sm:mt-0 flex flex-nowrap gap-2 justify-between text-sm items-center py-2 px-4 w-40 border border-light/30 bg-light/10 text-light rounded-md active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+                <img src="/assets/images/svg/download.svg" class="h-5 w-5" alt="">
+                <span class="text-nowrap">Request Data</span>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-wrap lg:flex-nowrap justify-between">
+            <div class="flex flex-col">
+              <p class="text-sm sm:text-base font-medium">Delete Account (<span
+                  class="text-primary-red-hover">IRREVERSIBLE</span>)</p>
+              <p class="text-xs text-lightGray">Pull the thanos snap on us. This cannot be reversed</p>
+            </div>
+            <div>
+              <a href="#"
+                class="relative mt-4 sm:mt-0 flex flex-nowrap gap-2 justify-between text-sm items-center py-2 px-4 w-40 border border-primary-red-hover/30 bg-primary-red-hover/10 text-primary-red-hover rounded-md active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+                <img src="/assets/images/svg/delete.svg" class="h-5 w-5" alt="">
+                <span class="text-nowrap">Delete Account</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script type="module" src="index.js"></script>
+      <script type="module" src="../../main.js"></script>
 </body>
 
 </html>
