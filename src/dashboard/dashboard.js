@@ -8,10 +8,17 @@ if (document.cookie !== null && document.cookie !== undefined) {
     return acc;
   }, {});
 
-  if (!cookieObj["_volunteer_token"]) {
+  if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
     window.location.href = "/joinUs/";
   }
-  else if (cookieObj["_creator_token"]) {
-    window.location.href = "/src/dashboard/creatorDashboard/";
-  }
+
+  // if (cookieObj["_creator_token"]) {
+  //   window.location.href = "/src/dashboard/creatorDashboard/";
+  //   return;
+  // }
+
+  // if (cookieObj["_volunteer_token"]) {
+  //   window.location.href = "/src/dashboard/volunteerDashboard/";
+  //   return;
+  // }
 }
