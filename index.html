@@ -1,93 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<di lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plant for Future</title>
-  <link rel="stylesheet" href="/public/main.css" />
-  <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant for Future</title>
+    <link rel="stylesheet" href="/public/main.css" />
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+  </head>
 
-<body class="bg-blackPearl">
-  <!-- Navbar -->
-  <nav
-    class="fixed block backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0">
-    <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
-      <div class="hidden lg:block">
-        <ul class="lg:flex gap-8 justify-start items-center">
-          <li><a
-              class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
-              href="#" aria-current="page">Home</a></li>
-          <li><a
-              class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
-              href="#about">About</a></li>
-          <li><a
-              class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
-              href="#contact">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div class="flex justify-start lg:justify-center items-center text-2xl">
-        <img src="/logo.png" class="w-14" onClick="window.location.reload()" alt="logo" />
-      </div>
-
-      <!-- Hamburger -->
-      <div class="hamburger block lg:hidden cursor-pointer" aria-label="Open Menu">
-        <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="50" onclick="this.classList.toggle('active')">
-          <path class="line top"
-            d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
-          <path class="line middle" d="m 70,50 h -40" />
-          <path class="line bottom"
-            d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
-        </svg>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div
-        class="mobile-menu  lg:hidden fixed top-20 left-full w-44 sm:w-58 md:w-60 h-[calc(100vh-130px)] bg-blackPearl/90 backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
-        <div class="py-8 px-6 flex flex-col justify-between items-start h-full">
-          <ul class="flex flex-col gap-4 justify-center items-center">
-            <li><a href="#" class="text-lg">Home</a></li>
-            <li><a href="#about" class="text-lg">About</a></li>
-            <li><a href="#contact" class="text-lg">Contact Us</a></li>
+  <body class="bg-blackPearl">
+    <!-- Navbar -->
+    <nav
+      class="fixed block backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0 z-50">
+      <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
+        <div class="hidden lg:block">
+          <ul class="lg:flex gap-8 justify-start items-center">
+            <li><a
+                class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+                href="#" aria-current="page">Home</a></li>
+            <li><a
+                class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+                href="#about">About</a></li>
+            <li><a
+                class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
+                href="#contact">Contact Us</a></li>
           </ul>
-          <div class="flex flex-col gap-4 justify-center">
-            <a href="/joinUs/"><button
-                class="w-full py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-                Login
-              </button></a>
-            <a href="/donate/"
-              class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-              <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
-              <span>Donate</span>
-            </a>
+        </div>
+
+        <div class="flex justify-start lg:justify-center items-center text-2xl">
+          <img src="/logo.png" class="w-14" onClick="window.location.reload()" alt="logo" />
+        </div>
+
+        <!-- Hamburger -->
+        <div class="hamburger block lg:hidden cursor-pointer" aria-label="Open Menu">
+          <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="50" onclick="this.classList.toggle('active')">
+            <path class="line top"
+              d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+            <path class="line middle" d="m 70,50 h -40" />
+            <path class="line bottom"
+              d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+          </svg>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          class="mobile-menu  lg:hidden fixed top-20 left-full w-44 sm:w-58 md:w-60 h-[calc(100vh-130px)] bg-blackPearl/90 backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
+          <div class="py-8 px-6 flex flex-col justify-between items-start h-full">
+            <ul class="flex flex-col gap-4 justify-center items-center">
+              <li><a href="#" class="text-lg">Home</a></li>
+              <li><a href="#about" class="text-lg">About</a></li>
+              <li><a href="#contact" class="text-lg">Contact Us</a></li>
+            </ul>
+            <div class="flex flex-col gap-4 justify-center">
+              <a href="/joinUs/"><button
+                  class="w-full py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+                  Login
+                </button></a>
+              <a href="/donate/"
+                class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+                <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
+                <span>Donate</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="close-menu absolute top-4 right-4 cursor-pointer">
           </div>
         </div>
+        <!-- Mobile Menu End -->
 
-        <div class="close-menu absolute top-4 right-4 cursor-pointer">
+        <div class="lg:flex gap-8 justify-end items-center hidden">
+          <a href="/joinUs/"><button
+              class="py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+              Login
+            </button>
+          </a>
+          <a href="/donate/"
+            class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+            <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
+            <span>Donate</span>
+          </a>
         </div>
       </div>
-      <!-- Mobile Menu End -->
-
-      <div class="lg:flex gap-8 justify-end items-center hidden">
-        <a href="/joinUs/"><button
-            class="py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-            Login
-          </button>
-        </a>
-        <a href="/donate/"
-          class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-          <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
-          <span>Donate</span>
-        </a>
+    </nav>
+    <div id="app">
+      <div class="relative w-full h-[90vh] overflow-hidden mt-[10vh]">
+        <!-- Added mt-[60px] to account for navbar height -->
+        <div class="flex transition-transform duration-5000 ease-in-out" id="slides">
+          <div class="w-full h-screen flex-shrink-0">
+            <iframe src="https://www.youtube.com/embed/eS-MpmL6fPc" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <div class="w-full h-screen flex-shrink-0">
+            <iframe src="https://www.youtube.com/embed/eS-MpmL6fPc" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <div class="w-full h-screen flex-shrink-0">
+            <iframe src="https://www.youtube.com/embed/eS-MpmL6fPc" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+          <div class="w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer dot"></div>
+          <div class="w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer dot"></div>
+          <div class="w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer dot"></div>
+          <!-- Add more dots as needed -->
+        </div>
       </div>
+      <!-- Video Slider End -->
+
+      <div class="down">
+        <!-- Cards -->
+        <div class="cardholer flex p-6 justify-evenly w-full h-[40vh] gap-6">
+          <div class="cards bg-light w-1/4"></div>
+          <div class="cards bg-light w-1/4"></div>
+          <div class="cards bg-light w-1/4"></div>
+        </div>
+          <!-- Cards end-->
+           <div class="h-[60vh] flex items-center justify-evenly">
+            <div class="animatedvideo bg-light rounded-full w-1/4 h-1/4">
+
+            </div>
+            <div class="dailyquote w-1/4 border-solid border-white">
+
+            </div>
+
+           </div>
+      </div>
+      <!--Atul you will start your work from here-->
+
     </div>
-  </nav>
-  <!-- Navbar End -->
-  <div id="app" class="block px-32 py-4 min-w-screen"></div>
 
-  <script type="module" src="/src/main.js" async defer></script>
-</body>
 
-</html>
+
+
+    <script type="module" src="/src/main.js" async defer></script>
+  </body>
+
+  </html>
