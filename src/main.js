@@ -39,3 +39,41 @@ setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
 // Initial setup
 updateSlider()
+
+//For a Next section
+
+let imageData = [
+  { src: " ", alt: " " },
+  
+  // Add more images to the array for shuffling 
+];
+
+let newsData = [
+  { title: " ", text: " " },
+  
+  // Add more news to the array for shuffling
+];
+
+let videoData = [
+  { src: " " },
+  
+  // Add more videos to the array for shuffling
+];
+
+let currentIndex = 0;
+
+function updateContent() {
+  let image = imageData[currentIndex];
+  let news = newsData[currentIndex];
+  let video = videoData[currentIndex];
+
+  document.getElementById("image").src = image.src;
+  document.getElementById("image").alt = image.alt;
+  document.getElementById("news-title").textContent = news.title;
+  document.getElementById("news-text").textContent = news.text;
+  document.getElementById("video").src = video.src;
+
+  currentIndex = (currentIndex + 1) % imageData.length;
+}
+
+setInterval(updateContent, 5000); // Update every 5 seconds
