@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plant for Future</title>
-    <link rel="stylesheet" href="/public/main.css" />
+    <link rel="stylesheet" href="public/main.css" />
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
   </head>
 
@@ -132,40 +132,35 @@
       <!--Atul you will start your work from here-->
 
       <section class="py-20">
-        <h2 class="text-5xl text-center mb-10 text-white">Recent Activities</h2>
-        <div class="flex flex-col md:flex-row justify-center gap-10">
-          <div class="w-3/4 md:w-1/3 xl:w-1/4 p-4">
+        <h2 class="text-5xl text-center mb-10 text-light">Recent Activities</h2>
+        <div class="flex flex-col md:flex-row lg:flex-row xl:flex-row justify-center gap-10">
+          <div class="w-full md:w-1/3 lg:w-1/3 xl:w-1/4 p-4 sm:w-1/2 xs:w-full">
             <div class="bg-white shadow-md rounded p-4">
               <img id="image" src="image1.jpg" alt="Image 1" class="w-full h-48 object-cover rounded">
               <!--Add more images-->
-               <!--If you want to shuffle the images than add in javaScript code-->
-      
+              <!--If you want to shuffle the images than add in javaScript code-->
             </div>
           </div>
           <!--News Block start here-->
-          <div class="w-3/4 md:w-1/3 xl:w-1/4 p-4">
+          <div class="w-full md:w-1/3 lg:w-1/3 xl:w-1/4 p-4 sm:w-1/2 xs:w-full">
             <div class="bg-white shadow-md rounded p-4">
               <h3 id="news-title" class="text-lg font-bold mb-2">News Title</h3>
               <p id="news-text" class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
               <!--Add more news if you want-->
               <!--If you want to shuffle the news than add in javaScript code-->
-
             </div>
           </div>
           <!--Videos Block starts from here-->
-
-          <div class="w-3/4 md:w-1/3 xl:w-1/4 p-4">
+          <div class="w-full md:w-1/3 lg:w-1/3 xl:w-1/4 p-4 sm:w-1/2 xs:w-full">
             <div class="bg-white shadow-md rounded p-4">
               <video id="video" src="video1.mp4" class="w-full h-48 object-cover rounded" controls></video>
               <!--If you want to shuffle the news than add in javaScript code-->
-
             </div>
           </div>
         </div>
         <!--Learn more Button-->
-
         <div class="text-center mt-10">
-          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded text-xl">Learn More</button>
+          <button class="bg-primary-default hover:bg-primary-hover text-white font-bold py-4 px-8 rounded text-xl">Learn More</button>
         </div>
       </section>
 
@@ -173,12 +168,12 @@
 
     <!--Another Section for Plantation of Trees-->
 
-    <section class="h-screen bg-cover bg-center " style="background-image: url('../PlantForFuture/public/assets/images/LoginandSignupbg.jpg')"> <!--Add url of bg image-->
+    <section class="h-screen bg-cover bg-center" style="background-image: url('/assets/images/LoginandSignupbg.jpg')">
       <div class="flex h-screen justify-center items-center">
-        <div class="text-center">
-          <h1 class="text-6xl font-bold mb-12 text-white">Help Us Plant a Billion Trees</h1>
-          <h2 class="text-2xl text-white mb-10 font-bold">You'll do more than put a seed in the ground; you'll make sure these forests survive for future generations.</h2>
-          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-12 rounded text-2xl" onclick="window.location.href=''">Plant Your Tree</button> <!--Add the html page-->
+        <div class="text-center lg:w-1/2 md:w-2/3 sm:w-3/4 xs:w-full">
+          <h1 class="text-6xl font-bold mr-5 ml-5 mb-12 text-light lg:text-5xl md:text-4xl sm:text-3xl xs:text-2xl">Help Us Plant a Billion Trees</h1>
+          <h2 class="text-2xl text-light/75 ml-11 mr-11 mb-10 font-bold lg:text-xl md:text-lg sm:text-base xs:text-sm">You'll do more than put a seed in the ground; you'll make sure these forests survive for future generations.</h2>
+          <button class="bg-primary-red-default hover:bg-primary-red-hover text-white font-bold py-6 px-12 rounded text-2xl lg:text-xl md:text-lg sm:text-base xs:text-sm" onclick="window.location.href=''">Plant Your Tree</button>
         </div>
       </div>
     </section>
