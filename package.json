@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "predeploy": "npm run build",
-    "deploy" :"npm run build && npm run serve",
+    "deploy": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,6 +21,8 @@
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.7.1",
+    "jquery.easing": "^1.4.1",
     "vite": "^5.3.3"
   },
   "devDependencies": {
