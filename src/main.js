@@ -121,7 +121,7 @@ activities.forEach((activity) => {
     "flex",
     "flex-col",
     "gap-4",
-    `bg-[${activity.color}]/90`,
+    `bg-[${activity.color+'e6'}]`,
     "rounded-2xl",
     "p-8",
     "w-72",
