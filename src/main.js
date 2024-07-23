@@ -116,12 +116,13 @@ const activities = [
 // Render activities
 activities.forEach((activity) => {
   const activityElement = document.createElement("div");
+  activityElement.style.backgroundColor = activity.color;
+  activityElement.style.opacity = 0.9;
   activityElement.classList.add(
     "relative",
     "flex",
     "flex-col",
     "gap-4",
-    `bg-[${activity.color+'e6'}]`,
     "rounded-2xl",
     "p-8",
     "w-72",
