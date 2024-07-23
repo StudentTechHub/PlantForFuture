@@ -13,7 +13,8 @@
 
 <body class="bg-blackPearl">
   <!-- Navbar -->
-  <nav class="fixed backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0">
+  <nav
+    class="fixed backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0 font-manrope">
     <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
       <div class="hidden lg:block">
         <ul class="lg:flex gap-8 justify-start items-center">
@@ -94,9 +95,98 @@
     </div>
   </nav>
   <!-- Navbar End -->
-  <div id="dashboard" class="mt-24 px-32 min-w-screen">
-    <div class="text-center text-2xl text-light" id="user-info"></div>
+  <div id="dashboard" class="mt-24 px-32 min-w-screen font-manrope">
+    <div class="text-center text-2xl text-light" id="activity-info">
+      <h1 class="text-4xl font-semibold">Manage Activities</h1>
+      <p class="mt-2 text-base text-lightGray">Create, edit, and delete activities</p>
+      <div class="mt-16">
+        <!-- create activity -->
+        <div id="addActivity"
+          class="flex justify-center items-center w-96 rounded-2xl min-h-[400px] border-4 border-light border-dashed cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-light" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+            </path>
+          </svg>
+        </div>
+        <!-- activity list -->
+        <div id="activities">
+
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Create Activity Modal -->
+  <div id="create-activity-modal"
+    class="fixed top-0 left-0 w-screen h-screen backdrop-blur-lg justify-center items-center hidden">
+    <div class="bg-light/10 w-1/2 h-5/6 rounded-2xl p-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl text-light font-semibold">Create Activity</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-red-default cursor-pointer" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor" id="closeBtn">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </div>
+      <hr class="my-4">
+      <form id="create-activity-form" class="mt-4 pr-4 h-5/6 overflow-y-auto">
+        <div class="flex flex-col w-full gap-4">
+          <div class="flex flex-col gap-2">
+            <label for="activityName" class="text-sm text-light">Title</label>
+            <input id="activityName" type="text"
+              class="input w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              placeholder="Title" required>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="activity-description" class="text-sm text-light">Description</label>
+            <textarea id="activity-description" name="activity-description"
+              class="w-full max-h-36 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5 resize-none"
+              required></textarea>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="startDate" class="text-sm text-light
+              ">Start Date</label>
+            <input type="date" id="startDate" name="activity-date"
+              class="input custom-calendar-picker w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              required />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="endDate" class="text-sm text-light
+              ">End Date</label>
+            <input type="date" id="endDate" name="activity-date"
+              class="input custom-calendar-picker w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              required />
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="text-light text-sm">Activity Type</span>
+            <div class="flex h-12 gap-4 pl-5 items-center justify-start border-2 border-lightGray/30 rounded-lg">
+              <p class="flex gap-2 justify-center items-center">
+                <input id="plantation" data-value="Plantation Drive" type="radio" name="radio-group" required><label class="text-lightGray" for="plantation">Plantation Drive</label>
+              </p>
+              <p class="flex gap-2 justify-center items-center">
+                <input id="garbageCleaning" data-value="Garbage Cleaning" type="radio" name="radio-group" required><label class="text-lightGray"
+                  for="garbageCleaning">Garbage Cleaning</label>
+              </p>
+              <p class="flex gap-2 justify-center items-center">
+                <input id="awareness" data-value="Awarness" type="radio" name="radio-group" required><label class="text-lightGray"
+                  for="awareness">Awarness</label>
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="activity-location" class="text-light text-sm">Location</label>
+            <input type="text" id="activity-location" name="activity-location"
+              class="input w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5" placeholder="Location"
+              required />
+          </div>
+        </div>
+        <button type="submit" id="createActivityBtn"
+          class="btn text-base my-6 text-light bg-primary-default hover:bg-primary-hover w-40 px-5 py-2 rounded-xl font-semibold">Create
+          Activity</button>
+      </form>
+    </div>
+  </div>
+
 
   <script type="module" src="/src/dashboard/creatorDashboard/index.js"></script>
   <script type="module" src="/src/dashboard/dashboard.js"></script>
