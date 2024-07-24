@@ -14,7 +14,7 @@
 <body class="bg-blackPearl">
   <!-- Navbar -->
   <nav
-    class="fixed backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0 font-manrope">
+    class="fixed backdrop-blur-super bg-transparent text-light px-10 sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0 font-manrope z-50">
     <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
       <div class="hidden lg:block">
         <ul class="lg:flex gap-8 justify-start items-center">
@@ -99,19 +99,15 @@
     <div class="text-center text-2xl text-light" id="activity-info">
       <h1 class="text-4xl font-semibold">Manage Activities</h1>
       <p class="mt-2 text-base text-lightGray">Create, edit, and delete activities</p>
-      <div class="mt-16">
+      <div id="activities" class="my-16 flex flex-wrap gap-8 justify-between w-full">
         <!-- create activity -->
         <div id="addActivity"
-          class="flex justify-center items-center w-96 rounded-2xl min-h-[400px] border-4 border-light border-dashed cursor-pointer">
+          class="flex justify-center items-center min-w-96 rounded-2xl min-h-[400px] border-4 border-light border-dashed cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-light" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
             </path>
           </svg>
-        </div>
-        <!-- activity list -->
-        <div id="activities">
-
         </div>
       </div>
     </div>
@@ -119,8 +115,8 @@
 
   <!-- Create Activity Modal -->
   <div id="create-activity-modal"
-    class="fixed top-0 left-0 w-screen h-screen backdrop-blur-lg justify-center items-center hidden">
-    <div class="bg-light/10 w-1/2 h-5/6 rounded-2xl p-8">
+    class="fixed top-0 left-0 w-screen h-screen bg-blackPearl/60 justify-center items-center hidden">
+    <div class="bg-light/10 backdrop-blur-lg w-1/2 h-5/6 rounded-2xl p-8">
       <div class="flex justify-between items-center">
         <h1 class="text-2xl text-light font-semibold">Create Activity</h1>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-red-default cursor-pointer" fill="none"
