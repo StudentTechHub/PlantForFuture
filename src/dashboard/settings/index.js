@@ -1,9 +1,79 @@
+import validateForm from "../../js/utils";
+
 document.addEventListener("DOMContentLoaded", async () => {
+
+  const currentUser = document.cookie.includes("_volunteer_token") ? "volunteer" : document.cookie.includes("_creator_token") ? "creator" : null;
+
   const avatarDiv = document.querySelector("#avatar-dropdown");
   const dropdownMenu = document.querySelector("#dropdown-menu");
 
   const visibility = document.querySelectorAll(".eye-button");
   const password = document.querySelectorAll("input[type='password']");
+
+  // handle Status Modal
+  const statusModal = document.querySelector("#status-modal");
+  const statusMsg = document.querySelector("#status-message");
+  const statusMsgClose = document.querySelector("#status-close-modal");
+  
+  statusMsgClose.addEventListener("click", () => {
+    statusModal.classList.add("hidden");
+  });
+  
+  // Handling save modal
+  const saveModal = document.querySelector("#save-changes-modal");
+  const saveModalClose = document.querySelector("#cancel-changes");
+  const saveButton = document.querySelector("#save-changes");
+  const userInfoDiv = document.querySelector("#user-info");
+
+  document.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("change", () => {
+      saveModal.classList.remove("hidden");
+    });
+  });
+
+  saveModalClose.addEventListener("click", () => {
+    saveModal.classList.add("hidden");
+  });
+
+  saveButton.addEventListener("click", async () => {
+    const firstName = document.querySelector("#firstName").value;
+    const lastName = document.querySelector("#lastName").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#newPassword").value;
+    
+    if (!validateForm({ type: "email", value: email })) {
+      statusMsg.textContent = "Invalid email address.";
+      statusModal.classList.remove("hidden");
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/v1/${currentUser}/update-info`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: `${firstName} ${lastName}`,
+          email,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      displayUserData(data);
+      statusMsg.textContent = "User data updated successfully.";
+      statusModal.classList.remove("hidden");
+      saveModal.classList.add("hidden");
+    } catch (error) {
+      console.error("Error updating user data:", error);
+      statusMsg.textContent = "Failed to update user data.";
+    }
+  });
 
   // Handle Password Visibility
   visibility.forEach((visibilityButton, index) => {
@@ -22,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`/api/v1/volunteer/me`, {
+      const response = await fetch(`/api/v1/${currentUser}/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       displayUserData(data);
     } catch (error) {
       console.error("Error fetching user data:", error);
-      userInfoDiv.textContent = "Failed to load user data.";
+      userInfoDiv.textContent = "Failed to user data.";
     }
   };
 
@@ -48,6 +118,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelectorAll(".user-name").forEach((elem) => {
       elem.innerText = `${data.fullName}`;
     });
+
+    // filling the form with the user data
+    document.querySelector("#firstName").value = data.fullName.split(" ")[0];
+    document.querySelector("#lastName").value = data.fullName.split(" ")[1];
+    document.querySelector("#email").value = data.email;
   };
 
   await fetchUserData();

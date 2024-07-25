@@ -154,7 +154,7 @@ function displayActivities() {
     });
   }
 
-  fetch("/api/v1/activity/recent", {
+  fetch("/api/v1/activity/upcoming", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

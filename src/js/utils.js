@@ -4,7 +4,7 @@ const validateForm = (input) => {
     return emailRegex.test(input.value);
   }
 
-  const isPasswordField = input.id === "password" || input.id === "confirmPassword";
+  const isPasswordField = input.id === "password" || input.id === "confirmPassword" || input.id === "currentPassword" || input.id === "newPassword";
   if (isPasswordField) {
     return input.value.length >= 8;
   }
