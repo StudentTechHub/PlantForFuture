@@ -2,7 +2,14 @@ import validateForm from "../../js/utils";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+  // Checking if the user is a volunteer or creator
   const currentUser = document.cookie.includes("_volunteer_token") ? "volunteer" : document.cookie.includes("_creator_token") ? "creator" : null;
+
+  // Routing to the user dashboard
+  const userDashboard = document.getElementById("user-dashboard");
+  userDashboard.addEventListener("click", () => {
+    window.location.href = `../${currentUser}/`;
+  });
 
   const avatarDiv = document.querySelector("#avatar-dropdown");
   const dropdownMenu = document.querySelector("#dropdown-menu");
@@ -144,7 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Logout
   document.querySelector("#logout").addEventListener("click", async () => {
     try {
-      const response = await fetch(`/api/v1/volunteer/logout`, {
+      const response = await fetch(`/api/v1/${currentUser}/logout`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error("Network response was not ok");
       }
 
-      window.location.href = "/joinUs/";
+      window.location.href = "/join-us/";
     } catch (error) {
       console.error("Error logging out:", error);
     }

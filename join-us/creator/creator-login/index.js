@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
         "Login failed. Please check your credentials and try again."
       );
     } else {
-      window.location.href = "/src/dashboard/creatorDashboard/";
+      window.location.href = "/src/dashboard/creator/";
     }
   } catch (error) {
     console.error("Error:", error);

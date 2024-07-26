@@ -20,10 +20,10 @@
         <ul class="lg:flex gap-8 justify-start items-center">
           <li><a
               class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
-              href="#" aria-current="page">Home</a></li>
+              href="#dashboard" aria-current="page">Home</a></li>
           <li><a
               class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
-              href="#about">About</a></li>
+              href="../activities/">All Activities</a></li>
           <li><a
               class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 ease-in-out"
               href="#contact">Contact Us</a></li>
@@ -50,8 +50,8 @@
         class="mobile-menu  lg:hidden fixed top-20 left-full w-44 sm:w-58 md:w-60 h-[calc(100vh-130px)] bg-blackPearl/90 backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
         <div class="py-8 px-6 flex flex-col justify-between items-start h-full">
           <ul class="flex flex-col gap-4 justify-center items-center">
-            <li><a href="#" class="text-lg">Home</a></li>
-            <li><a href="#about" class="text-lg">About</a></li>
+            <li><a href="#dashboard" class="text-lg">Home</a></li>
+            <li><a href="../activities/" class="text-lg">All Activities</a></li>
             <li><a href="#contact" class="text-lg">Contact Us</a></li>
           </ul>
           <!-- avatar dropdown -->
@@ -82,7 +82,8 @@
       <div id="dropdown-menu"
         class="absolute top-20 right-32 w-32 rounded-lg border-2 border-lightGray/30 bg-transparent shadow-[0 8px 16px rgba(0, 0, 0, 0.2)] z-1 overflow-hidden hidden">
         <ul class="list-none m-0 px-2 bg-light/10">
-          <li class="flex cursor-pointer gap-2 items-center justify-center px-4 py-2 border-b border-light/30" onclick="window.location.href = '../settings/'">
+          <li class="flex cursor-pointer gap-2 items-center justify-center px-4 py-2 border-b border-light/30"
+            onclick="window.location.href = '../settings/'">
             <img src="/assets/images/svg/settings.svg" class="h-5 w-5" alt="">
             <span class="text-light block">Settings</span>
           </li>
@@ -99,7 +100,7 @@
     <div class="text-center text-2xl text-light" id="activity-info">
       <h1 class="text-4xl font-semibold">Manage Activities</h1>
       <p class="mt-2 text-base text-lightGray">Create, edit, and delete activities</p>
-      <div id="activities" class="my-16 flex flex-wrap gap-8 justify-between w-full">
+      <div id="activities" class="my-16 flex flex-wrap gap-8 w-full">
         <!-- create activity -->
         <div id="addActivity"
           class="flex justify-center items-center min-w-96 rounded-2xl min-h-[400px] border-4 border-light border-dashed cursor-pointer">
@@ -157,23 +158,24 @@
             <span class="text-light text-sm">Activity Type</span>
             <div class="flex h-12 gap-4 pl-5 items-center justify-start border-2 border-lightGray/30 rounded-lg">
               <p class="flex gap-2 justify-center items-center">
-                <input id="plantation" data-value="Plantation Drive" type="radio" name="radio-group" required><label class="text-lightGray" for="plantation">Plantation Drive</label>
+                <input id="plantation" data-value="Plantation Drive" type="radio" name="radio-group" required><label
+                  class="text-lightGray" for="plantation">Plantation Drive</label>
               </p>
               <p class="flex gap-2 justify-center items-center">
-                <input id="garbageCleaning" data-value="Garbage Cleaning" type="radio" name="radio-group" required><label class="text-lightGray"
-                  for="garbageCleaning">Garbage Cleaning</label>
+                <input id="garbageCleaning" data-value="Garbage Cleaning" type="radio" name="radio-group"
+                  required><label class="text-lightGray" for="garbageCleaning">Garbage Cleaning</label>
               </p>
               <p class="flex gap-2 justify-center items-center">
-                <input id="awareness" data-value="Awarness" type="radio" name="radio-group" required><label class="text-lightGray"
-                  for="awareness">Awarness</label>
+                <input id="awareness" data-value="Awarness" type="radio" name="radio-group" required><label
+                  class="text-lightGray" for="awareness">Awarness</label>
               </p>
             </div>
           </div>
           <div class="flex flex-col gap-2">
             <label for="activity-location" class="text-light text-sm">Location</label>
             <input type="text" id="activity-location" name="activity-location"
-              class="input w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5" placeholder="Location"
-              required />
+              class="input w-full h-12 text-sm bg-transparent placeholder-light/30 outline-none border-2 border-lightGray/30 rounded-lg sm:text-base text-light py-5 pr-5 pl-5"
+              placeholder="Location" required />
           </div>
         </div>
         <button type="submit" id="createActivityBtn"
@@ -184,7 +186,7 @@
   </div>
 
 
-  <script type="module" src="/src/dashboard/creatorDashboard/index.js"></script>
+  <script type="module" src="/src/dashboard/creator/index.js"></script>
   <script type="module" src="/src/dashboard/dashboard.js"></script>
   <script type="module" src="/src/main.js" async defer></script>
 </body>

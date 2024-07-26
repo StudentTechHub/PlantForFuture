@@ -34,7 +34,7 @@ form.addEventListener("submit", (e) => {
   )
     return;
 
-  fetch(`/api/v1/creator/register`, {
+  fetch(`/api/v1/volunteer/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -53,7 +53,7 @@ form.addEventListener("submit", (e) => {
     }),
   }).then((res) =>
     res.ok
-      ? (window.location.href = "/joinUs/creator/creatorLogin/")
+      ? (window.location.href = "/join-us/volunteer/volunteer-login/")
       : alert("Username or email already exists")
   );
 });

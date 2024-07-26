@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
         "Login failed. Please check your credentials and try again."
       );
     } else {
-      window.location.href = "/src/dashboard/volunteerDashboard/";
+      window.location.href = "/src/dashboard/volunteer/";
     }
   } catch (error) {
     console.error("Error:", error);

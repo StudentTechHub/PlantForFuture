@@ -7,20 +7,33 @@ export default defineConfig({
   base: "/",
 
   build: {
+    target: "esnext",
     outDir: "dist",
     assetsDir: "assets",
     sourcemap: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        joinUs: resolve(__dirname, "joinUs/index.html"),
         settings: resolve(__dirname, "src/dashboard/settings/index.html"),
-        volunteerLogin: resolve(__dirname, "joinUs/volunteer/volunteerLogin/index.html"),
-        volunteerSignup: resolve(__dirname, "joinUs/volunteer/volunteerSignup/index.html"),
-        creatorLogin: resolve(__dirname, "joinUs/creator/creatorLogin/index.html"),
-        creatorSignup: resolve(__dirname, "joinUs/creator/creatorSignup/index.html"),
-        volunteerDashboard: resolve(__dirname, "src/dashboard/volunteerDashboard/index.html"),
-        creatorDashboard: resolve(__dirname, "src/dashboard/creatorDashboard/index.html"),
+        "join-us": resolve(__dirname, "join-us/index.html"),
+        volunteer: resolve(__dirname, "src/dashboard/volunteer/index.html"),
+        creator: resolve(__dirname, "src/dashboard/creator/index.html"),
+        "volunteer-login": resolve(
+          __dirname,
+          "join-us/volunteer/volunteer-login/index.html"
+        ),
+        "volunteer-signup": resolve(
+          __dirname,
+          "join-us/volunteer/volunteer-signup/index.html"
+        ),
+        "creator-login": resolve(
+          __dirname,
+          "join-us/creator/creator-login/index.html"
+        ),
+        "creator-signup": resolve(
+          __dirname,
+          "join-us/creator/creator-signup/index.html"
+        ),
       },
     },
   },
@@ -37,7 +50,5 @@ export default defineConfig({
     },
   },
 
-  plugins: [
-    // Add any Vite plugins here (optional)
-  ],
+  plugins: [],
 });

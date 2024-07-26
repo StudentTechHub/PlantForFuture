@@ -1,11 +1,10 @@
+const userInfoDiv = document.querySelector("#user-info");
 const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
-const addActivity = document.querySelector("#addActivity");
-addActivity.addEventListener("click", createActivityModal);
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch(`/api/v1/creator/me`, {
+    const response = await fetch(`/api/v1/volunteer/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -19,8 +18,8 @@ const fetchUserData = async () => {
     const data = await response.json();
     displayUserData(data);
   } catch (error) {
-    console.error("Error fetching user data:", error);
-    alert("Failed to load user data.");
+    console.error("Error fetching data:", error);
+    userInfoDiv.textContent = "Failed to load data.";
   }
 };
 
@@ -52,7 +51,7 @@ document.addEventListener("click", function (event) {
 // Logout
 document.querySelector("#logout").addEventListener("click", async () => {
   try {
-    const response = await fetch(`/api/v1/creator/logout`, {
+    const response = await fetch(`/api/v1/volunteer/logout`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -63,98 +62,23 @@ document.querySelector("#logout").addEventListener("click", async () => {
       throw new Error("Network response was not ok");
     }
 
-    window.location.href = "/joinUs/";
+    window.location.href = "/join-us/";
   } catch (error) {
     console.error("Error logging out:", error);
   }
 });
 
-const inputs = document.querySelectorAll("input[name='radio-group']");
-
-let activityType;
-inputs.forEach((input) => {
-  input.addEventListener("change", function () {
-    activityType =
-      (document.querySelector("input#plantation").checked &&
-        document
-          .querySelector("input#plantation")
-          .getAttribute("data-value")) ||
-      (document.querySelector("input#garbageCleaning").checked &&
-        document
-          .querySelector("input#garbageCleaning")
-          .getAttribute("data-value")) ||
-      (document.querySelector("input#awareness").checked &&
-        document.querySelector("input#awareness").getAttribute("data-value"));
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
-});
-
-// createActivity
-function createActivity() {
-  const activityName = document.getElementById("activityName").value;
-  const activityDescription = document.getElementById(
-    "activity-description"
-  ).value;
-  const activityStartDate = new Date(
-    document.getElementById("startDate").value
-  );
-  const activityEndDate = new Date(document.getElementById("endDate").value);
-
-  const activityLocation = document.getElementById("activity-location").value;
-
-  const activity = {
-    type: activityType,
-    title: activityName,
-    description: activityDescription,
-    startDate: activityStartDate,
-    endDate: activityEndDate,
-    location: activityLocation,
-  };
-
-  fetch("/api/v1/creator/create-activity", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(activity),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      window.location.href = "/dashboard/creatorDashboard";
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
-function deleteActivity(activityId) {
-  fetch(`/api/v1/creator/activity/${activityId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      window.location.href = "/dashboard/creatorDashboard";
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
 }
 
 function displayActivities() {
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
-
-  fetch("/api/v1/activity/upcoming", {
+  fetch("/api/v1/volunteer/my-activities", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -181,7 +105,7 @@ function displayActivities() {
           "bg-cover"
         );
         activityElement.innerHTML = `
-          <div class="flex flex-col gap-4 p-6 rounded-xl bg-blackPearl">
+          <div class="flex flex-col gap-4 p-6 rounded-xl h-full pb-20 bg-blackPearl">
               <p class="text-2xl text-left font-semibold">${activity.title}</p>
               <p class="text-lg text-left">${activity.description}</p>
               <div>
@@ -223,30 +147,18 @@ function displayActivities() {
                   } more</div>
                 </div>
               </div>
-              <div class="flex justify-between items-center">
                 <button
-                  class="text-lg text-light bg-primary-default hover:bg-primary-hover w-32 py-2 px-5 rounded-xl font-semibold">
-                  Join now
+                  id="leave-activity${index}"
+                  class="absolute my-4 bottom-0 text-lg text-light bg-primary-red-default hover:bg-primary-red-hover w-32 py-2 px-5 rounded-xl font-semibold"
+                  >
+                  Leave
                 </button>
-                <div class="flex gap-4">
-                	<button
-                	  class="text-lg text-light bg-primary-default/30 hover:bg-primary-hover/30 p-2 rounded-full font-semibold">
-                	  <img src="/assets/images/svg/edit.svg" alt="edit"/>
-                	</button>
-                  <button
-                    class="text-lg text-light bg-primary-red-default/30 hover:bg-primary-red-hover/30 p-2 rounded-full font-semibold"
-                    id="deleteAct${index}">
-                    <img src="/assets/images/svg/delete.svg" alt="delete"/>
-                  </button>
-                </div>
-              </div>
             </div>
         `;
         activitiesDiv.appendChild(activityElement);
-
-        document
-          .getElementById(`deleteAct${index}`)
-          .addEventListener("click", () => deleteActivity(activity._id));
+        document.getElementById(`leave-activity${index}`).addEventListener("click", () => {
+          leaveActivity(activity._id);
+        });
       });
     })
     .catch((error) => {
@@ -254,29 +166,22 @@ function displayActivities() {
     });
 }
 
-displayActivities();
-
-function createActivityModal() {
-  const modal = document.getElementById("create-activity-modal");
-  modal.classList.add("flex");
-  modal.classList.remove("hidden");
-
-  const closeBtn = document.getElementById("closeBtn");
-
-  closeBtn.onclick = function () {
-    modal.classList.add("hidden");
-  };
-
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.classList.add("hidden");
-    }
-  };
-
-  const createActivityForm = document.querySelector("#create-activity-form");
-
-  createActivityForm.onsubmit = function (e) {
-    e.preventDefault();
-    createActivity();
-  };
+function leaveActivity(activityId) {
+  fetch(`/api/v1/volunteer/activity/${activityId}/leave`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
+
+displayActivities();
