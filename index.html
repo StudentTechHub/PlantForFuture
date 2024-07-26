@@ -93,8 +93,10 @@
         <img src="/assets/images/landing-hero.jpeg" class=" md:block w-11/12 rounded-xl" alt="environment">
       </div>
       <div class="text-light md:w-1/2 flex flex-col gap-12 items-center md:items-start">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl text-center md:text-left font-semibold">Join the movement to save our planet</h1>
-        <p class="text-lg text-center md:text-left">Connect with environmental influencers and volunteers to amplify your impact.
+        <h1 class="text-3xl sm:text-4xl md:text-5xl text-center md:text-left font-semibold">Join the movement to save
+          our planet</h1>
+        <p class="text-lg text-center md:text-left">Connect with environmental influencers and volunteers to amplify
+          your impact.
           Collaborate to raise awareness, mobilize resources, and promote sustainability together.</p>
         <button class="text-lg text-blackPearl bg-light w-36 p-5 rounded-xl font-semibold">Join now</button>
       </div>
@@ -139,7 +141,8 @@
   <div id="upcoming-activities" class="min-h-screen text-light flex flex-col justify-center gap-20 font-manrope">
     <div class="flex flex-col bg-[url('/assets/images/activities-bg.png')] py-10 bg-no-repeat bg-center bg-cover">
       <h1 class="text-5xl font-bold text-blackPearl text-center pb-16">Upcoming Activities</h1>
-      <div id="upcoming-activity-container" class="flex flex-col md:flex-row gap-8 justify-between px-10 sm:px-16 md:px-28 lg:px-32 items-center">
+      <div id="upcoming-activity-container"
+        class="flex flex-col md:flex-row gap-8 justify-between px-10 sm:px-16 md:px-28 lg:px-32 items-center">
         <!-- Dynamically Rendered -->
       </div>
     </div>
@@ -229,6 +232,12 @@
       </div>
     </div>
   </footer>
+  <script>
+    fetch("https://plantforfuture-0aad8652667a.herokuapp.com/").then((res) => {
+      console.log("API is working")
+    })
+
+  </script>
   <script type="module" src="/src/js/counter.min.js" async defer></script>
   <script type="module" src="/src/main.js" async defer></script>
   <script type="module" src="/src/js/Home.js" async defer></script>
