@@ -15,8 +15,7 @@
     <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
       <div class="hidden lg:block">
         <ul class="lg:flex gap-8 justify-start items-center">
-          <li><a
-              id="user-dashboard"
+          <li><a id="user-dashboard"
               class="after:block after:w-0 after:h-px after:bg-light after:rounded-full after:m-auto after:transition-all after:duration-300 after:hover:w-10/12 cursor-pointer ease-in-out"
               aria-current="page">Home</a></li>
           <li><a
@@ -45,8 +44,8 @@
 
       <!-- Mobile Menu -->
       <div
-        class="mobile-menu  lg:hidden fixed top-20 left-full w-44 sm:w-58 md:w-60 h-[calc(100vh-130px)] bg-blackPearl/90 backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
-        <div class="py-8 px-6 flex flex-col justify-between items-start h-full">
+        class="mobile-menu lg:hidden fixed top-20 left-full w-44 sm:w-58 md:w-60 min-h-full bg-blackPearl backdrop-blur-lg z-50 transform -translate-x-0 transition-transform duration-300">
+        <div class="pt-8 pb-44 px-6 flex flex-col justify-between items-start h-screen">
           <ul class="flex flex-col gap-4 justify-center items-center">
             <li><a href="#" class="text-lg">Home</a></li>
             <li><a href="#about" class="text-lg">About</a></li>
@@ -61,6 +60,11 @@
                 <img src="/assets/images/volunteer-.png" class="pfp aspect-square py-px" alt="profilePicture">
               </div>
               <span class="user-name text-lg font-semibold"></span>
+            </div>
+            <div
+              class="logout flex gap-2 items-center justify-center cursor-pointer bg-transparent hover:bg-primary-red-default/20 border border-primary-red-default px-4 py-2 rounded-lg">
+              <img src="/assets/images/svg/logout.svg" class="h-5 w-5" alt="">
+              <span class="text-light block">Logout</span>
             </div>
           </div>
         </div>
@@ -85,7 +89,7 @@
             <img src="/assets/images/svg/settings.svg" class="h-5 w-5" alt="">
             <span class="text-light block">Settings</span>
           </li>
-          <li id="logout" class="flex cursor-pointer gap-2 items-center justify-center px-4 py-2">
+          <li class="logout flex cursor-pointer gap-2 items-center justify-center px-4 py-2">
             <img src="/assets/images/svg/logout.svg" class="h-5 w-5" alt="">
             <span class="text-light block">Logout</span>
           </li>

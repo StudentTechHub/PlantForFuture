@@ -1,9 +1,12 @@
 import validateForm from "../../js/utils";
 
 document.addEventListener("DOMContentLoaded", async () => {
-
   // Checking if the user is a volunteer or creator
-  const currentUser = document.cookie.includes("_volunteer_token") ? "volunteer" : document.cookie.includes("_creator_token") ? "creator" : null;
+  const currentUser = document.cookie.includes("_volunteer_token")
+    ? "volunteer"
+    : document.cookie.includes("_creator_token")
+    ? "creator"
+    : null;
 
   // Routing to the user dashboard
   const userDashboard = document.getElementById("user-dashboard");
@@ -21,11 +24,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const statusModal = document.querySelector("#status-modal");
   const statusMsg = document.querySelector("#status-message");
   const statusMsgClose = document.querySelector("#status-close-modal");
-  
+
   statusMsgClose.addEventListener("click", () => {
     statusModal.classList.add("hidden");
   });
-  
+
   // Handling save modal
   const saveModal = document.querySelector("#save-changes-modal");
   const saveModalClose = document.querySelector("#cancel-changes");
@@ -47,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lastName = document.querySelector("#lastName").value;
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#newPassword").value;
-    
+
     if (!validateForm({ type: "email", value: email })) {
       statusMsg.textContent = "Invalid email address.";
       statusModal.classList.remove("hidden");
@@ -149,22 +152,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Logout
-  document.querySelector("#logout").addEventListener("click", async () => {
-    try {
-      const response = await fetch(`/api/v1/${currentUser}/logout`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  document.querySelectorAll(".logout").forEach((element, index) => {
+    element.onclick = async () => {
+      try {
+        const response = await fetch(`/api/v1/volunteer/logout`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        window.location.href = "/join-us/";
+      } catch (error) {
+        console.error("Error logging out:", error);
       }
-
-      window.location.href = "/join-us/";
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
+    };
   });
 });

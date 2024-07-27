@@ -49,23 +49,25 @@ document.addEventListener("click", function (event) {
 });
 
 // Logout
-document.querySelector("#logout").addEventListener("click", async () => {
-  try {
-    const response = await fetch(`/api/v1/volunteer/logout`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+document.querySelectorAll(".logout").forEach((element, index) => {
+  element.onclick = async () => {
+    try {
+      const response = await fetch(`/api/v1/volunteer/logout`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      window.location.href = "/join-us/";
+    } catch (error) {
+      console.error("Error logging out:", error);
     }
-
-    window.location.href = "/join-us/";
-  } catch (error) {
-    console.error("Error logging out:", error);
-  }
+  };
 });
 
 function formatDate(dateString) {
@@ -156,9 +158,11 @@ function displayActivities() {
             </div>
         `;
         activitiesDiv.appendChild(activityElement);
-        document.getElementById(`leave-activity${index}`).addEventListener("click", () => {
-          leaveActivity(activity._id);
-        });
+        document
+          .getElementById(`leave-activity${index}`)
+          .addEventListener("click", () => {
+            leaveActivity(activity._id);
+          });
       });
     })
     .catch((error) => {

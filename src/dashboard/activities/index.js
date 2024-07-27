@@ -200,23 +200,25 @@ async function displayActivities() {
 }
 
 // Logout
-document.querySelector("#logout").addEventListener("click", async () => {
-  try {
-    const response = await fetch(`/api/v1/${currentUser}/logout`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+document.querySelectorAll(".logout").forEach((element, index) => {
+  element.onclick = async () => {
+    try {
+      const response = await fetch(`/api/v1/volunteer/logout`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      window.location.href = "/join-us/";
+    } catch (error) {
+      console.error("Error logging out:", error);
     }
-
-    window.location.href = "/join-us/";
-  } catch (error) {
-    console.error("Error logging out:", error);
-  }
+  };
 });
 
 displayActivities();

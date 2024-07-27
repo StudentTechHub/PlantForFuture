@@ -13,7 +13,7 @@
   <!-- Navbar -->
   <nav
     class="fixed block backdrop-blur-super bg-transparent text-light px-10 font-manrope sm:px-16 md:px-28 lg:px-32 py-4 w-screen top-0 z-50">
-    <div class="flex lg:grid lg:grid-flow-col lg:grid-cols-3 justify-between items-center">
+    <div class="flex justify-between items-center lg:grid lg:grid-flow-col lg:grid-cols-3">
       <div class="hidden lg:block">
         <ul class="lg:flex gap-8 justify-start items-center">
           <li><a
@@ -52,16 +52,38 @@
             <li><a href="#about" class="text-lg">About</a></li>
             <li><a href="#contact" class="text-lg">Contact Us</a></li>
           </ul>
-          <div class="flex flex-col gap-4 justify-center">
-            <a href="/join-us/"><button
-                class="w-full py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-                Login
-              </button></a>
-            <a href="/donate/"
-              class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-              <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
-              <span>Donate</span>
-            </a>
+
+          <div class="user-section flex gap-8 justify-end items-center">
+
+            <!-- Logged out view -->
+            <div class="flex flex-col items-center gap-4">
+              <a href="/join-us/" class="login-button">
+                <button
+                  class="py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">Login</button>
+              </a>
+              <a href="/donate/" class="donate-button">
+                <button
+                  class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+                  <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
+                  <span>Donate</span>
+                </button>
+              </a>
+            </div>
+
+            <!-- Logged in view -->
+            <div class="avatar-dropdown flex flex-col gap-4">
+              <div class="flex gap-4 justify-end items-center cursor-pointer relative">
+                <div class="border-2 max-w-12 rounded-md max-h-12 border-light/30 bg-light/10 overflow-hidden">
+                  <img src="/assets/images/volunteer-boy.png" class="pfp aspect-square pt-px" alt="profilePicture">
+                </div>
+                <span class="user-name text-lg font-semibold"></span>
+              </div>
+              <div
+                class="logout flex gap-2 items-center justify-center cursor-pointer bg-transparent hover:bg-primary-red-default/20 border border-primary-red-default px-4 py-2 rounded-lg">
+                <img src="/assets/images/svg/logout.svg" class="h-5 w-5" alt="">
+                <span class="text-light block">Logout</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -70,17 +92,45 @@
       </div>
       <!-- Mobile Menu End -->
 
-      <div class="lg:flex gap-8 justify-end items-center hidden">
-        <a href="/join-us/"><button
-            class="py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-            Login
+      <div class="user-section hidden lg:flex gap-8 justify-end items-center ">
+        <!-- Logged out view -->
+        <a href="/join-us/" class="login-button">
+          <button
+            class="py-2 px-6 bg-green-400/30 rounded-md font-semibold text-green-400 active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">Login</button>
+        </a>
+        <a href="/donate/" class="donate-button">
+          <button
+            class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
+            <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
+            <span>Donate</span>
           </button>
         </a>
-        <a href="/donate/"
-          class="relative flex gap-2 justify-between items-center py-2 px-4 w-28 bg-primary-red-default/30 text-primary-red-default rounded-md font-semibold active:scale-95 hover:scale-105 transition-all duration-300 ease-in-out">
-          <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="">
-          <span>Donate</span>
-        </a>
+        <!-- Logged in view -->
+        <div id="avatar-dropdown2" class="flex gap-4 justify-end items-center cursor-pointer relative">
+          <div class="border-2 w-12 rounded-md h-12 border-light/30 bg-light/10 overflow-hidden">
+            <img src="/assets/images/volunteer-boy.png" class="pfp aspect-square pt-px" alt="profilePicture">
+          </div>
+          <span class="user-name text-lg font-semibold"></span>
+          <!-- Dropdown menu -->
+          <div id="dropdown-menu"
+            class="absolute top-16 right-0 w-full rounded-lg border-2 border-lightGray/30 bg-transparent shadow-[0 8px 16px rgba(0, 0, 0, 0.2)] z-1 overflow-hidden hidden">
+            <ul class="list-none m-0 px-2 bg-blackPearl">
+              <li id="user-dashboard"
+                class="flex cursor-pointer gap-2 px-4 py-2 border-b border-light/30">
+                <img src="/assets/images/svg/dashboard.svg" class="h-5 w-5" alt="dashboard">
+                <span class="text-light block">Dashboard</span>
+              </li>
+              <li class="flex cursor-pointer gap-2 px-4 py-2 border-b border-light/30">
+                <img src="/assets/images/svg/donateIcon.svg" class="h-5 w-5" alt="donate">
+                <span class="text-light block">Donate</span>
+              </li>
+              <li class="logout flex cursor-pointer gap-2 px-4 py-2">
+                <img src="/assets/images/svg/logout.svg" class="h-5 w-5" alt="logout">
+                <span class="text-light block">Logout</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -208,12 +258,6 @@
         </div>
         <!-- Bottom section with social icons and buttons -->
         <div class="flex flex-col md:flex-row md:justify-between items-center">
-          <div class="flex gap-4 mb-4 md:mb-0">
-            <a href="#"><img src="/assets/images/svg/facebook.svg" class="h-6 w-6" alt="facebook"></a>
-            <a href="#"><img src="/assets/images/svg/twitter.svg" class="h-6 w-6" alt="twitter"></a>
-            <a href="#"><img src="/assets/images/svg/instagram.svg" class="h-6 w-6" alt="instagram"></a>
-            <a href="#"><img src="/assets/images/svg/linkedin.svg" class="h-6 w-6" alt="linkedin"></a>
-          </div>
           <p class="text-sm mb-4 md:mb-0">© 2024 Plant for Future. All rights reserved.</p>
           <div class="flex gap-4">
             <a href="/join-us/">
@@ -232,13 +276,6 @@
       </div>
     </div>
   </footer>
-  <script>
-    fetch("https://plantforfuture-0aad8652667a.herokuapp.com/").then((res) => {
-      console.log("API is working")
-    })
-
-  </script>
-  <script type="module" src="/src/js/counter.min.js" async defer></script>
   <script type="module" src="/src/main.js" async defer></script>
   <script type="module" src="/src/js/Home.js" async defer></script>
 </body>
