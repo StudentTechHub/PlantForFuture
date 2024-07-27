@@ -1,3 +1,5 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const userInfoDiv = document.querySelector("#user-info");
 const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
@@ -19,7 +21,7 @@ userDashboard.forEach((input) => {
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch(`/api/v1/${currentUser}/me`, {
+    const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +66,7 @@ document.addEventListener("click", function (event) {
 });
 
 function joinActivity(activityId) {
-  fetch(`/api/v1/volunteer/activity/${activityId}/join`, {
+  fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/join`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -175,7 +177,7 @@ function activityTemplate(activity) {
 async function displayActivities() {
   try {
     const [upcomingResponse, recentResponse] = await Promise.all([
-      fetch("/api/v1/activity/upcoming", {
+      fetch(`${apiUrl}/api/v1/activity/upcoming`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -203,7 +205,7 @@ async function displayActivities() {
 document.querySelectorAll(".logout").forEach((element, index) => {
   element.onclick = async () => {
     try {
-      const response = await fetch(`/api/v1/volunteer/logout`, {
+      const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

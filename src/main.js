@@ -1,3 +1,5 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const hamburger = document.querySelector(".hamburger");
 const mobileMenu = document.querySelector(".mobile-menu");
 
@@ -38,7 +40,7 @@ if (currentUser) {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`/api/v1/${currentUser}/me`, {
+      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +69,9 @@ if (currentUser) {
     });
   };
 
-  await fetchUserData();
+  (async () => {
+    await fetchUserData();
+  })();
 
   avatarDiv.addEventListener("click", function () {
     dropdownMenu.classList.toggle("hidden");
@@ -83,7 +87,7 @@ if (currentUser) {
   document.querySelectorAll(".logout").forEach((element) => {
     element.addEventListener("click", async () => {
       try {
-        const response = await fetch(`/api/v1/${currentUser}/logout`, {
+        const response = await fetch(`${apiUrl}/api/v1/${currentUser}/logout`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

@@ -1,10 +1,12 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const userInfoDiv = document.querySelector("#user-info");
 const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch(`/api/v1/volunteer/me`, {
+    const response = await fetch(`${apiUrl}/api/v1/volunteer/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +54,7 @@ document.addEventListener("click", function (event) {
 document.querySelectorAll(".logout").forEach((element, index) => {
   element.onclick = async () => {
     try {
-      const response = await fetch(`/api/v1/volunteer/logout`, {
+      const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +82,7 @@ function formatDate(dateString) {
 }
 
 function displayActivities() {
-  fetch("/api/v1/volunteer/my-activities", {
+  fetch(`${apiUrl}/api/v1/volunteer/my-activities`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -171,7 +173,7 @@ function displayActivities() {
 }
 
 function leaveActivity(activityId) {
-  fetch(`/api/v1/volunteer/activity/${activityId}/leave`, {
+  fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/leave`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

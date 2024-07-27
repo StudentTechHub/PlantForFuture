@@ -1,4 +1,5 @@
 import validateForm from "../../js/utils";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      const response = await fetch(`/api/v1/${currentUser}/update-info`, {
+      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/update-info`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`/api/v1/${currentUser}/me`, {
+      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".logout").forEach((element, index) => {
     element.onclick = async () => {
       try {
-        const response = await fetch(`/api/v1/volunteer/logout`, {
+        const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

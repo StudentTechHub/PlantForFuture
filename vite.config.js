@@ -41,13 +41,13 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
-    proxy: {
-      "/api": {
-        target: "https://plantforfuture-0aad8652667a.herokuapp.com/",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "/api"),
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "https://plantforfuture-0aad8652667a.herokuapp.com/",
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, "/api"),
+    //   },
+    // },
   },
 
   plugins: [],

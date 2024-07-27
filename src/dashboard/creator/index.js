@@ -1,3 +1,5 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
 const addActivity = document.querySelector("#addActivity");
@@ -5,7 +7,7 @@ addActivity.addEventListener("click", createActivityModal);
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch(`/api/v1/creator/me`, {
+    const response = await fetch(`${apiUrl}/api/v1/creator/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +55,7 @@ document.addEventListener("click", function (event) {
 document.querySelectorAll(".logout").forEach((element) => {
   element.onclick = async () => {
     try {
-      const response = await fetch(`/api/v1/volunteer/logout`, {
+      const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +114,7 @@ function createActivity() {
     location: activityLocation,
   };
 
-  fetch("/api/v1/creator/create-activity", {
+  fetch(`${apiUrl}/api/v1/creator/create-activity`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -130,7 +132,7 @@ function createActivity() {
 }
 
 function deleteActivity(activityId) {
-  fetch(`/api/v1/creator/activity/${activityId}`, {
+  fetch(`${apiUrl}/api/v1/creator/activity/${activityId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -156,7 +158,7 @@ function displayActivities() {
     });
   }
 
-  fetch("/api/v1/activity/upcoming", {
+  fetch(`${apiUrl}/api/v1/activity/upcoming`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

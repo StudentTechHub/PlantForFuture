@@ -1,4 +1,5 @@
 import validateForm from "../../../src/js/utils";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const visibility = document.querySelectorAll(".eye-button");
 const password = document.querySelectorAll("input[type='password']");
@@ -30,7 +31,7 @@ form.addEventListener("submit", async (e) => {
   if (!inputs.every((input) => validateForm(input))) return;
 
   try {
-    const response = await fetch(`/api/v1/volunteer/login`, {
+    const response = await fetch(`${apiUrl}/api/v1/volunteer/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
