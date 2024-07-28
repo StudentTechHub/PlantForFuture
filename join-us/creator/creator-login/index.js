@@ -33,6 +33,7 @@ form.addEventListener("submit", async (e) => {
   try {
     const response = await fetch(`${apiUrl}/api/v1/creator/login`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

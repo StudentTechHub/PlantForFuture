@@ -37,6 +37,7 @@ form.addEventListener("submit", (e) => {
 
   fetch(`${apiUrl}/api/v1/volunteer/register`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
