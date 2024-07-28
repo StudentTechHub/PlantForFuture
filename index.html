@@ -115,8 +115,7 @@
           <div id="dropdown-menu"
             class="absolute top-16 right-0 w-full rounded-lg border-2 border-lightGray/30 bg-transparent shadow-[0 8px 16px rgba(0, 0, 0, 0.2)] z-1 overflow-hidden hidden">
             <ul class="list-none m-0 px-2 bg-blackPearl">
-              <li id="user-dashboard"
-                class="flex cursor-pointer gap-2 px-4 py-2 border-b border-light/30">
+              <li id="user-dashboard" class="flex cursor-pointer gap-2 px-4 py-2 border-b border-light/30">
                 <img src="/assets/images/svg/dashboard.svg" class="h-5 w-5" alt="dashboard">
                 <span class="text-light block">Dashboard</span>
               </li>
@@ -276,6 +275,13 @@
       </div>
     </div>
   </footer>
+  <script>
+    fetch(`https://plantforfuture-0aad8652667a.herokuapp.com/`).then((res) => {
+      if (res.ok) {
+        console.log("API is working!")
+      }
+    })    
+  </script>
   <script type="module" src="/src/main.js" async defer></script>
   <script type="module" src="/src/js/Home.js" async defer></script>
 </body>
