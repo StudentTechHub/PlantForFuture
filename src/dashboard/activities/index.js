@@ -183,7 +183,7 @@ async function displayActivities() {
           "Content-Type": "application/json",
         },
       }),
-      fetch("/api/v1/activity/recent", {
+      fetch(`${apiUrl}/api/v1/activity/recent`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -55,7 +55,7 @@ function displayActivities() {
     });
   }
 
-  fetch("/api/v1/activity/upcoming", {
+  fetch(`${apiUrl}/api/v1/activity/upcoming`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -133,7 +133,7 @@ function displayActivities() {
 
     // Data for Recent activities
 
-    fetch("/api/v1/activity/recent", {
+    fetch(`${apiUrl}/api/v1/activity/recent`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
