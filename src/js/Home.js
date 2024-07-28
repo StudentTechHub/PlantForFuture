@@ -1,5 +1,6 @@
 import $ from "jquery";
 import "jquery.easing";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 // Counter
 function updateCounter($this, target) {
