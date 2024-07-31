@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
   const currentUser = await fetch(`${apiUrl}/api/v1/check_login`, {
     method: "GET",
+    credentials: "include",
   })
     .then((response) => response.json())
     .then((data) => {

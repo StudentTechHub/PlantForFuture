@@ -3,6 +3,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 let isLoggedIn = fetch(`${apiUrl}/api/v1/check_login`, {
   method: "GET",
+  credentials: "include",
 })
   .then((response) => response.json())
   .then((data) => {
