@@ -37,9 +37,6 @@ form.addEventListener("submit", async (e) => {
       password: inputs[1].value,
     }, {
       withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
 
     // const response = await fetch(`${apiUrl}/api/v1/creator/login`, {
@@ -61,7 +58,6 @@ form.addEventListener("submit", async (e) => {
         "Login failed. Please check your credentials and try again."
       );
     } else {
-      sessionStorage.setItem("user", "creator");
       window.location.href = "/src/dashboard/creator/";
     }
   } catch (error) {

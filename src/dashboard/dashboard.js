@@ -8,16 +8,9 @@ if (document.cookie !== null && document.cookie !== undefined) {
     return acc;
   }, {});
 
-  const user = sessionStorage.getItem("currentUser");
-  const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
-
-  if (currentUser) {
-    window.location.href = `/src/dashboard/${currentUser}/`;
+  if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
+    window.location.href = "/join-us/";
   }
-
-  // if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
-  //   window.location.href = "/join-us/";
-  // }
 
   // if (cookieObj["_creator_token"]) {
   //   window.location.href = "/src/dashboard/creator/";

@@ -5,13 +5,11 @@ const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
 
 // Checking if the user is a volunteer or creator
-const user = sessionStorage.getItem("currentUser");
-const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
-// const currentUser = document.cookie.includes("_volunteer_token")
-//   ? "volunteer"
-//   : document.cookie.includes("_creator_token")
-//   ? "creator"
-//   : null;
+const currentUser = document.cookie.includes("_volunteer_token")
+  ? "volunteer"
+  : document.cookie.includes("_creator_token")
+  ? "creator"
+  : null;
 
 // Routing to the user dashboard
 const userDashboard = document.querySelectorAll(".user-dashboard");
