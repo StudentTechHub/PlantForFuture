@@ -15,16 +15,16 @@ if (document.cookie !== null && document.cookie !== undefined) {
     window.location.href = `/src/dashboard/${currentUser}/`;
   }
 
-  // if (!cookieObj["volunteer_token"] && !cookieObj["creator_token"]) {
+  // if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
   //   window.location.href = "/join-us/";
   // }
 
-  // if (cookieObj["creator_token"]) {
+  // if (cookieObj["_creator_token"]) {
   //   window.location.href = "/src/dashboard/creator/";
   //   return;
   // }
 
-  // if (cookieObj["volunteer_token"]) {
+  // if (cookieObj["_volunteer_token"]) {
   //   window.location.href = "/src/dashboard/volunteer/";
   //   return;
   // }

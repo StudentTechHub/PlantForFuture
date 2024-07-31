@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
   const user = sessionStorage.getItem("currentUser");
   const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
-  // const currentUser = document.cookie.includes("volunteer_token")
+  // const currentUser = document.cookie.includes("_volunteer_token")
   //   ? "volunteer"
-  //   : document.cookie.includes("creator_token")
+  //   : document.cookie.includes("_creator_token")
   //   ? "creator"
   //   : null;
 
