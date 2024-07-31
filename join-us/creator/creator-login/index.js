@@ -1,4 +1,5 @@
 import validateForm from "../../../src/js/utils";
+import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const visibility = document.querySelectorAll(".eye-button");
@@ -31,19 +32,26 @@ form.addEventListener("submit", async (e) => {
   if (!inputs.every((input) => validateForm(input))) return;
 
   try {
-    const response = await fetch(`${apiUrl}/api/v1/creator/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(
-        inputs.reduce((acc, input) => {
-          acc[input.id] = input.value.replace(/\s/g, "");
-          return acc;
-        }, {})
-      ),
-    });
+    const response = await axios.post(`${apiUrl}/api/v1/creator/login`, {
+      username: inputs[0].value,
+      password: inputs[1].value,
+    }, {
+      withCredentials: true,
+    })
+
+    // const response = await fetch(`${apiUrl}/api/v1/creator/login`, {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(
+    //     inputs.reduce((acc, input) => {
+    //       acc[input.id] = input.value.replace(/\s/g, "");
+    //       return acc;
+    //     }, {})
+    //   ),
+    // });
 
     if (!response.ok) {
       throw new Error(
