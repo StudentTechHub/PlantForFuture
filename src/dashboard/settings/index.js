@@ -62,18 +62,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/update-info`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: `${firstName} ${lastName}`,
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${apiUrl}/api/v1/${currentUser}/update-info`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: `${firstName} ${lastName}`,
+            email,
+            password,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");

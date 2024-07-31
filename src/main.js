@@ -18,106 +18,103 @@ window.addEventListener("DOMContentLoaded", async () => {
     mobileMenu.classList.toggle("-translate-x-0");
   });
 
-  const checkForCookies = async () => {
-    let currentUser = document.cookie.includes("_volunteer_token")
-      ? "volunteer"
-      : document.cookie.includes("_creator_token")
-      ? "creator"
-      : null;
+  const currentUser = await fetch(`${apiUrl}/api/v1/check_login`, {
+    method: "GET",
+    credentials: "include",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
 
-    if (currentUser) {
-      loginButton.forEach((element) => {
-        element.classList.add("hidden");
-      });
-      donateButton.forEach((element) => {
-        element.classList.add("hidden");
-      });
-      avatarDiv.classList.remove("hidden");
-      avatarDivMob.classList.remove("hidden");
+  if (currentUser) {
+    loginButton.forEach((element) => {
+      element.classList.add("hidden");
+    });
+    donateButton.forEach((element) => {
+      element.classList.add("hidden");
+    });
+    avatarDiv.classList.remove("hidden");
+    avatarDivMob.classList.remove("hidden");
 
-      const fetchUserData = async () => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
+          method: "GET",
+          credentials: "include", // Include credentials
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        displayUserData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        alert("Failed to fetch user data.");
+      }
+    };
+
+    const displayUserData = (data) => {
+      document.querySelector(".pfp").src = `/assets/images/volunteer-${
+        data.gender === "male" ? "boy" : "girl"
+      }.png`;
+      const username = document.querySelectorAll(".user-name");
+      username.forEach((element) => {
+        element.innerText = `${data.fullName}`;
+      });
+    };
+
+    await fetchUserData();
+
+    avatarDiv.addEventListener("click", function () {
+      dropdownMenu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!avatarDiv.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+
+    document.querySelectorAll(".logout").forEach((element) => {
+      element.addEventListener("click", async () => {
         try {
-          const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
-            method: "GET",
-            credentials: "include", // Include credentials
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          const response = await fetch(
+            `${apiUrl}/api/v1/${currentUser}/logout`,
+            {
+              method: "GET",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
 
-          const data = await response.json();
-          displayUserData(data);
+          window.location.href = "/join-us/";
         } catch (error) {
-          console.error("Error fetching user data:", error);
-          alert("Failed to fetch user data.");
-        }
-      };
-
-      const displayUserData = (data) => {
-        document.querySelector(".pfp").src = `/assets/images/volunteer-${
-          data.gender === "male" ? "boy" : "girl"
-        }.png`;
-        const username = document.querySelectorAll(".user-name");
-        username.forEach((element) => {
-          element.innerText = `${data.fullName}`;
-        });
-      };
-
-      await fetchUserData();
-
-      avatarDiv.addEventListener("click", function () {
-        dropdownMenu.classList.toggle("hidden");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!avatarDiv.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.classList.add("hidden");
+          console.error("Error logging out:", error);
         }
       });
-
-      document.querySelectorAll(".logout").forEach((element) => {
-        element.addEventListener("click", async () => {
-          try {
-            const response = await fetch(
-              `${apiUrl}/api/v1/${currentUser}/logout`,
-              {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-
-            window.location.href = "/join-us/";
-          } catch (error) {
-            console.error("Error logging out:", error);
-          }
-        });
-      });
-    } else {
-      loginButton.forEach((element) => {
-        element.classList.remove("hidden");
-      });
-      donateButton.forEach((element) => {
-        element.classList.remove("hidden");
-      });
-      avatarDiv.classList.add("hidden");
-      avatarDivMob.classList.add("hidden");
-
-      setTimeout(checkForCookies, 500);
-    }
-  };
-
-  await checkForCookies();
+    });
+  } else {
+    loginButton.forEach((element) => {
+      element.classList.remove("hidden");
+    });
+    donateButton.forEach((element) => {
+      element.classList.remove("hidden");
+    });
+    avatarDiv.classList.add("hidden");
+    avatarDivMob.classList.add("hidden");
+  }
 
   userDashboard.addEventListener("click", () => {
     window.location.href = `/src/dashboard/${currentUser}/`;
