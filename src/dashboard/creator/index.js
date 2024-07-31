@@ -128,8 +128,7 @@ function createActivity() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
-      window.location.href = "/dashboard/creator/";
+      window.location.href = "/src/dashboard/creator/";
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -146,8 +145,7 @@ function deleteActivity(activityId) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
-      window.location.href = "/dashboard/creator/";
+      window.location.href = "/src/dashboard/creator/";
     })
     .catch((error) => {
       console.error("Error:", error);
