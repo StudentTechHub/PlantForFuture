@@ -276,11 +276,17 @@
     </div>
   </footer>
   <script>
-    fetch(`https://plantforfuture-0aad8652667a.herokuapp.com/`).then((res) => {
-      if (res.ok) {
-        console.log("API is working v1")
-      }
-    })    
+    window.watsonAssistantChatOptions = {
+      integrationID: "b6f49f47-268e-4c43-8d07-52c1c3627d57",
+      region: "us-south",
+      serviceInstanceID: "7d47507e-b546-4b35-a962-1e3629185928",
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function () {
+      const t = document.createElement('script');
+      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
   </script>
   <script type="module" src="/src/main.js" async defer></script>
   <script type="module" src="/src/js/Home.js" async defer></script>

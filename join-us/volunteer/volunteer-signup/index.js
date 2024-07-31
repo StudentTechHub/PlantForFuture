@@ -48,17 +48,14 @@ form.addEventListener("submit", (e) => {
       gender: inputs[3].checked
         ? "male"
         : inputs[4].checked
-          ? "female"
-          : "other",
+        ? "female"
+        : "other",
       password: inputs[5].value,
       confirmPassword: inputs[6].value,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      (window.location.href = "/join-us/volunteer/volunteer-login/")
-      sessionStorage.setItem("user", "volunteer");
-    } else {
-      alert("Username or email already exists")
-    }
-  });
+  }).then((res) =>
+    res.ok
+      ? (window.location.href = "/join-us/volunteer/volunteer-login/")
+      : alert("Username or email already exists")
+  );
 });
