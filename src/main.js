@@ -18,14 +18,32 @@ window.addEventListener("DOMContentLoaded", async () => {
     mobileMenu.classList.toggle("-translate-x-0");
   });
 
-  const currentUser = await fetch(`${apiUrl}/api/v1/check_login`, {
+  // Checking if the user is a volunteer or creator
+  const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
     method: "GET",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
       return data.userType;
     });
+
+  const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
+
+  const currentUser = creator || volunteer;
 
   if (currentUser) {
     loginButton.forEach((element) => {
@@ -41,7 +59,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       try {
         const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
           method: "GET",
-          credentials: "include", // Include credentials
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },

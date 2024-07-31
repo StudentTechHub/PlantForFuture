@@ -5,13 +5,31 @@ const avatarDiv = document.querySelector("#avatar-dropdown");
 const dropdownMenu = document.querySelector("#dropdown-menu");
 
 // Checking if the user is a volunteer or creator
-const currentUser = await fetch(`${apiUrl}/api/v1/check_login`, {
+const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
   method: "GET",
+  credentials: "include",
+  headers: {
+    "Content-Type": "application/json",
+  },
 })
   .then((response) => response.json())
   .then((data) => {
     return data.userType;
   });
+
+const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
+  method: "GET",
+  credentials: "include",
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    return data.userType;
+  });
+
+const currentUser = creator || volunteer;
 
 // Routing to the user dashboard
 const userDashboard = document.querySelectorAll(".user-dashboard");
