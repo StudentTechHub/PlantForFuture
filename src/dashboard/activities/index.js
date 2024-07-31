@@ -1,142 +1,143 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const userInfoDiv = document.querySelector("#user-info");
-const avatarDiv = document.querySelector("#avatar-dropdown");
-const dropdownMenu = document.querySelector("#dropdown-menu");
+document.addEventListener("DOMContentLoaded", async () => {
+  const userInfoDiv = document.querySelector("#user-info");
+  const avatarDiv = document.querySelector("#avatar-dropdown");
+  const dropdownMenu = document.querySelector("#dropdown-menu");
 
-// Checking if the user is a volunteer or creator
-const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
-  method: "GET",
-  credentials: "include",
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    return data.userType;
-  });
-
-const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
-  method: "GET",
-  credentials: "include",
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    return data.userType;
-  });
-
-const currentUser = creator || volunteer;
-
-// Routing to the user dashboard
-const userDashboard = document.querySelectorAll(".user-dashboard");
-userDashboard.forEach((input) => {
-  input.addEventListener("click", () => {
-    window.location.href = `../${currentUser}/`;
-  });
-});
-
-const fetchUserData = async () => {
-  try {
-    const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-    displayUserData(data);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    userInfoDiv.textContent = "Failed to load data.";
-  }
-};
-
-const displayUserData = (data) => {
-  document.querySelector(".pfp").src = `/assets/images/volunteer-${
-    data.gender === "male" ? "boy" : "girl"
-  }.png`;
-  document.querySelectorAll(".user-name").forEach((elem) => {
-    elem.innerText = `${data.fullName}`;
-  });
-};
-
-await fetchUserData();
-
-// Avatar dropdown
-avatarDiv.addEventListener("click", function () {
-  dropdownMenu.classList.toggle("hidden");
-});
-
-document.addEventListener("click", function (event) {
-  if (
-    !avatarDiv.contains(event.target) &&
-    !dropdownMenu.contains(event.target)
-  ) {
-    dropdownMenu.classList.add("hidden");
-  }
-});
-
-function joinActivity(activityId) {
-  fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/join`, {
-    method: "POST",
+  // Checking if the user is a volunteer or creator
+  const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
+    method: "GET",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => {
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
+
+  const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
+
+  const currentUser = creator || volunteer;
+
+  // Routing to the user dashboard
+  const userDashboard = document.querySelectorAll(".user-dashboard");
+  userDashboard.forEach((input) => {
+    input.addEventListener("click", () => {
+      window.location.href = `../${currentUser}/`;
+    });
+  });
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
+
+      const data = await response.json();
+      displayUserData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      userInfoDiv.textContent = "Failed to load data.";
+    }
+  };
+
+  const displayUserData = (data) => {
+    document.querySelector(".pfp").src = `/assets/images/volunteer-${
+      data.gender === "male" ? "boy" : "girl"
+    }.png`;
+    document.querySelectorAll(".user-name").forEach((elem) => {
+      elem.innerText = `${data.fullName}`;
     });
-}
+  };
 
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  await fetchUserData();
+
+  // Avatar dropdown
+  avatarDiv.addEventListener("click", function () {
+    dropdownMenu.classList.toggle("hidden");
   });
-}
 
-// Display activities
-function activityTemplate(activity) {
-  const activitiesDiv = document.getElementById("activities");
+  document.addEventListener("click", function (event) {
+    if (
+      !avatarDiv.contains(event.target) &&
+      !dropdownMenu.contains(event.target)
+    ) {
+      dropdownMenu.classList.add("hidden");
+    }
+  });
 
-  activity.forEach((activity, index) => {
-    const activityElement = document.createElement("div");
-    activityElement.className = "activity";
-    activityElement.classList.add(
-      "relative",
-      "rounded-2xl",
-      "p-[3px]",
-      "w-72",
-      "md:w-[400px]",
-      "min-h-[400px]",
-      "bg-[url('/assets/images/LoginandSignupbg-1.jpg')]",
-      "bg-no-repeat",
-      "bg-center",
-      "bg-cover"
-    );
-    activityElement.innerHTML = `
+  function joinActivity(activityId) {
+    fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/join`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
+  // Display activities
+  function activityTemplate(activity) {
+    const activitiesDiv = document.getElementById("activities");
+
+    activity.forEach((activity, index) => {
+      const activityElement = document.createElement("div");
+      activityElement.className = "activity";
+      activityElement.classList.add(
+        "relative",
+        "rounded-2xl",
+        "p-[3px]",
+        "w-72",
+        "md:w-[400px]",
+        "min-h-[400px]",
+        "bg-[url('/assets/images/LoginandSignupbg-1.jpg')]",
+        "bg-no-repeat",
+        "bg-center",
+        "bg-cover"
+      );
+      activityElement.innerHTML = `
           <div class="flex flex-col gap-4 p-6 pb-20 rounded-xl h-full bg-blackPearl">
               <p class="text-2xl text-left font-semibold">${activity.title}</p>
               <p class="text-lg text-left">${activity.description}</p>
@@ -187,65 +188,66 @@ function activityTemplate(activity) {
                 </button>
             </div>
         `;
-    activitiesDiv.appendChild(activityElement);
-    document
-      .getElementById(`join-activity${index}`)
-      .addEventListener("click", () => {
-        joinActivity(activity._id);
-      });
-  });
-}
-
-async function displayActivities() {
-  try {
-    const [upcomingResponse, recentResponse] = await Promise.all([
-      fetch(`${apiUrl}/api/v1/activity/upcoming`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }),
-      fetch(`${apiUrl}/api/v1/activity/recent`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }),
-    ]);
-
-    const upcomingActivities = await upcomingResponse.json();
-    const recentActivities = await recentResponse.json();
-
-    activityTemplate(upcomingActivities);
-    activityTemplate(recentActivities);
-  } catch (error) {
-    console.error("Error:", error);
+      activitiesDiv.appendChild(activityElement);
+      document
+        .getElementById(`join-activity${index}`)
+        .addEventListener("click", () => {
+          joinActivity(activity._id);
+        });
+    });
   }
-}
 
-// Logout
-document.querySelectorAll(".logout").forEach((element, index) => {
-  element.onclick = async () => {
+  async function displayActivities() {
     try {
-      const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const [upcomingResponse, recentResponse] = await Promise.all([
+        fetch(`${apiUrl}/api/v1/activity/upcoming`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }),
+        fetch(`${apiUrl}/api/v1/activity/recent`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }),
+      ]);
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      const upcomingActivities = await upcomingResponse.json();
+      const recentActivities = await recentResponse.json();
 
-      window.location.href = "/join-us/";
+      activityTemplate(upcomingActivities);
+      activityTemplate(recentActivities);
     } catch (error) {
-      console.error("Error logging out:", error);
+      console.error("Error:", error);
     }
-  };
-});
+  }
 
-displayActivities();
+  // Logout
+  document.querySelectorAll(".logout").forEach((element, index) => {
+    element.onclick = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        window.location.href = "/join-us/";
+      } catch (error) {
+        console.error("Error logging out:", error);
+      }
+    };
+  });
+
+  displayActivities();
+});
