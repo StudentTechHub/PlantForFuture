@@ -3,9 +3,9 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
-  const currentUser = document.cookie.includes("_volunteer_token")
+  const currentUser = document.cookie.includes("volunteer_token")
     ? "volunteer"
-    : document.cookie.includes("_creator_token")
+    : document.cookie.includes("creator_token")
     ? "creator"
     : null;
 
