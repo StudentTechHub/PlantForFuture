@@ -1,24 +1,24 @@
 // Authenticate Dashboard
+const apiUrl = import.meta.env.VITE_API_URL;
 
-if (document.cookie !== null && document.cookie !== undefined) {
-  const cookies = document.cookie.split(";");
-  const cookieObj = cookies.reduce((acc, cookie) => {
-    const [key, value] = cookie.split("=");
-    acc[key.trim()] = value;
-    return acc;
-  }, {});
+let isLoggedIn = fetch(`${apiUrl}/api/v1/check_login`, {
+  method: "GET",
+})
+  .then((response) => response.json())
+  .then((data) => {
+    return data.loggedIn;
+  });
 
-  if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
-    window.location.href = "/join-us/";
-  }
-
-  // if (cookieObj["_creator_token"]) {
-  //   window.location.href = "/src/dashboard/creator/";
-  //   return;
-  // }
-
-  // if (cookieObj["_volunteer_token"]) {
-  //   window.location.href = "/src/dashboard/volunteer/";
-  //   return;
-  // }
+if (!isLoggedIn) {
+  window.location.href = "/join-us/";
 }
+
+// if (cookieObj["_creator_token"]) {
+//   window.location.href = "/src/dashboard/creator/";
+//   return;
+// }
+
+// if (cookieObj["_volunteer_token"]) {
+//   window.location.href = "/src/dashboard/volunteer/";
+//   return;
+// }

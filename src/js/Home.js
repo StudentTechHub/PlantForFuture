@@ -68,7 +68,7 @@ function displayActivities() {
       const activities = data;
 
       // Render Upcoming activities
-      
+
       activities.forEach((activity) => {
         const activityElement = document.createElement("div");
         activityElement.classList.add(
@@ -133,35 +133,35 @@ function displayActivities() {
       });
     });
 
-    // Data for Recent activities
+  // Data for Recent activities
 
-    fetch(`${apiUrl}/api/v1/activity/recent`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const activities = data;
-        // Render activities
-        activities.forEach((activity) => {
-          const activityElement = document.createElement("div");
-          activityElement.classList.add(
-            "relative",
-            "rounded-2xl",
-            "p-[3px]",
-            "w-72",
-            "md:w-[400px]",
-            "min-h-[400px]",
-            "bg-[url('/assets/images/LoginandSignupbg-1.jpg')]",
-            "bg-no-repeat",
-            "bg-center",
-            "bg-cover"
-          );
-  
-          activityElement.innerHTML = `
+  fetch(`${apiUrl}/api/v1/activity/recent`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const activities = data;
+      // Render activities
+      activities.forEach((activity) => {
+        const activityElement = document.createElement("div");
+        activityElement.classList.add(
+          "relative",
+          "rounded-2xl",
+          "p-[3px]",
+          "w-72",
+          "md:w-[400px]",
+          "min-h-[400px]",
+          "bg-[url('/assets/images/LoginandSignupbg-1.jpg')]",
+          "bg-no-repeat",
+          "bg-center",
+          "bg-cover"
+        );
+
+        activityElement.innerHTML = `
           <div class="flex flex-col gap-4 p-6 rounded-xl bg-blackPearl">
               <p class="text-2xl font-semibold">${activity.title}</p>
               <p class="text-lg">${activity.description}</p>
@@ -205,9 +205,26 @@ function displayActivities() {
                 now</button>
             </div>
           `;
-          recentActivities.append(activityElement);
-        });
+        recentActivities.append(activityElement);
       });
+    });
 }
+
+window.watsonAssistantChatOptions = {
+  integrationID: "b6f49f47-268e-4c43-8d07-52c1c3627d57",
+  region: "us-south",
+  serviceInstanceID: "7d47507e-b546-4b35-a962-1e3629185928",
+  onLoad: async (instance) => {
+    await instance.render();
+  },
+};
+setTimeout(function () {
+  const t = document.createElement("script");
+  t.src =
+    "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+    (window.watsonAssistantChatOptions.clientVersion || "latest") +
+    "/WatsonAssistantChatEntry.js";
+  document.head.appendChild(t);
+});
 
 displayActivities();
