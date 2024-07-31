@@ -1,6 +1,6 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
-document.addEventListener("DOMContentLoaded", async () => {
+(async () => {
   const hamburger = document.querySelector(".hamburger");
   const mobileMenu = document.querySelector(".mobile-menu");
 
@@ -87,7 +87,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     };
 
-    await fetchUserData();
+    (async function () {
+      await fetchUserData();
+    })();
 
     avatarDiv.addEventListener("click", function () {
       dropdownMenu.classList.toggle("hidden");
@@ -137,4 +139,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   userDashboard.addEventListener("click", () => {
     window.location.href = `/src/dashboard/${currentUser}/`;
   });
-});
+})();
