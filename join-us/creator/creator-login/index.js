@@ -37,6 +37,9 @@ form.addEventListener("submit", async (e) => {
       password: inputs[1].value,
     }, {
       withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
 
     // const response = await fetch(`${apiUrl}/api/v1/creator/login`, {
