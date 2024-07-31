@@ -3,11 +3,13 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
-  const currentUser = document.cookie.includes("volunteer_token")
-    ? "volunteer"
-    : document.cookie.includes("creator_token")
-    ? "creator"
-    : null;
+  const user = sessionStorage.getItem("currentUser");
+  const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
+  // const currentUser = document.cookie.includes("volunteer_token")
+  //   ? "volunteer"
+  //   : document.cookie.includes("creator_token")
+  //   ? "creator"
+  //   : null;
 
   // Routing to the user dashboard
   const userDashboard = document.getElementById("user-dashboard");
@@ -125,9 +127,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   const displayUserData = (data) => {
-    document.querySelector(".pfp").src = `/assets/images/volunteer-${
-      data.gender === "male" ? "boy" : "girl"
-    }.png`;
+    document.querySelector(".pfp").src = `/assets/images/volunteer-${data.gender === "male" ? "boy" : "girl"
+      }.png`;
     document.querySelectorAll(".user-name").forEach((elem) => {
       elem.innerText = `${data.fullName}`;
     });

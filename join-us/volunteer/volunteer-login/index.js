@@ -50,6 +50,7 @@ form.addEventListener("submit", async (e) => {
         "Login failed. Please check your credentials and try again."
       );
     } else {
+      sessionStorage.setItem("user", "volunteer");
       window.location.href = "/src/dashboard/volunteer/";
     }
   } catch (error) {

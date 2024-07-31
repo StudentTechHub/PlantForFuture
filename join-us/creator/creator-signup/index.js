@@ -48,14 +48,17 @@ form.addEventListener("submit", (e) => {
       gender: inputs[3].checked
         ? "male"
         : inputs[4].checked
-        ? "female"
-        : "other",
+          ? "female"
+          : "other",
       password: inputs[5].value,
       confirmPassword: inputs[6].value,
     }),
-  }).then((res) =>
-    res.ok
-      ? (window.location.href = "/join-us/creator/creator-login/")
-      : alert("Username or email already exists")
-  );
+  }).then((res) => {
+    if (res.ok) {
+      window.location.href = "/join-us/creator/creator-login/";
+      sessionStorage.setItem("user", "creator");
+    } else {
+      alert("Username or email already exists")
+    }
+  });
 });

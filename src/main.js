@@ -18,11 +18,8 @@ hamburger.addEventListener("click", () => {
 });
 
 // Checking if the user is a volunteer or creator
-const currentUser = document.cookie.includes("volunteer_token")
-  ? "volunteer"
-  : document.cookie.includes("creator_token")
-  ? "creator"
-  : null;
+const user = sessionStorage.getItem("currentUser");
+const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
 
 userDashboard.addEventListener("click", () => {
   window.location.href = `/src/dashboard/${currentUser}/`;
@@ -61,9 +58,8 @@ if (currentUser) {
   };
 
   const displayUserData = (data) => {
-    document.querySelector(".pfp").src = `/assets/images/volunteer-${
-      data.gender === "male" ? "boy" : "girl"
-    }.png`;
+    document.querySelector(".pfp").src = `/assets/images/volunteer-${data.gender === "male" ? "boy" : "girl"
+      }.png`;
     const username = document.querySelectorAll(".user-name");
     username.forEach((element) => {
       element.innerText = `${data.fullName}`;

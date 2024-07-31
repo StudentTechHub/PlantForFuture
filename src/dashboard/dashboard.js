@@ -8,9 +8,16 @@ if (document.cookie !== null && document.cookie !== undefined) {
     return acc;
   }, {});
 
-  if (!cookieObj["volunteer_token"] && !cookieObj["creator_token"]) {
-    window.location.href = "/join-us/";
+  const user = sessionStorage.getItem("currentUser");
+  const currentUser = user && user === "volunteer" ? "volunteer" : "creator";
+
+  if (currentUser) {
+    window.location.href = `/src/dashboard/${currentUser}/`;
   }
+
+  // if (!cookieObj["volunteer_token"] && !cookieObj["creator_token"]) {
+  //   window.location.href = "/join-us/";
+  // }
 
   // if (cookieObj["creator_token"]) {
   //   window.location.href = "/src/dashboard/creator/";
