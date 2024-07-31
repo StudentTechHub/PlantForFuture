@@ -23,6 +23,7 @@ const fetchUserData = async () => {
   try {
     const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -68,6 +69,7 @@ document.addEventListener("click", function (event) {
 function joinActivity(activityId) {
   fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/join`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -179,12 +181,14 @@ async function displayActivities() {
     const [upcomingResponse, recentResponse] = await Promise.all([
       fetch(`${apiUrl}/api/v1/activity/upcoming`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
       }),
       fetch(`${apiUrl}/api/v1/activity/recent`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -207,6 +211,7 @@ document.querySelectorAll(".logout").forEach((element, index) => {
     try {
       const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

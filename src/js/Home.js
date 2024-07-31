@@ -58,6 +58,7 @@ function displayActivities() {
 
   fetch(`${apiUrl}/api/v1/activity/upcoming`, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -136,6 +137,7 @@ function displayActivities() {
 
     fetch(`${apiUrl}/api/v1/activity/recent`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

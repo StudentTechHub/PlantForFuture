@@ -8,9 +8,9 @@ if (document.cookie !== null && document.cookie !== undefined) {
     return acc;
   }, {});
 
-  if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
-    window.location.href = "/join-us/";
-  }
+  // if (!cookieObj["_volunteer_token"] && !cookieObj["_creator_token"]) {
+  //   window.location.href = "/join-us/";
+  // }
 
   // if (cookieObj["_creator_token"]) {
   //   window.location.href = "/src/dashboard/creator/";

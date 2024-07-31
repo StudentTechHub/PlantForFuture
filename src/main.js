@@ -42,6 +42,7 @@ if (currentUser) {
     try {
       const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -89,6 +90,7 @@ if (currentUser) {
       try {
         const response = await fetch(`${apiUrl}/api/v1/${currentUser}/logout`, {
           method: "GET",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },

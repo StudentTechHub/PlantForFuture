@@ -9,6 +9,7 @@ const fetchUserData = async () => {
   try {
     const response = await fetch(`${apiUrl}/api/v1/creator/me`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -57,6 +58,7 @@ document.querySelectorAll(".logout").forEach((element) => {
     try {
       const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -116,6 +118,7 @@ function createActivity() {
 
   fetch(`${apiUrl}/api/v1/creator/create-activity`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -134,6 +137,7 @@ function createActivity() {
 function deleteActivity(activityId) {
   fetch(`${apiUrl}/api/v1/creator/activity/${activityId}`, {
     method: "DELETE",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -160,6 +164,7 @@ function displayActivities() {
 
   fetch(`${apiUrl}/api/v1/activity/upcoming`, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },

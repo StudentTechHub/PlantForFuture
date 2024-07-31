@@ -8,6 +8,7 @@ const fetchUserData = async () => {
   try {
     const response = await fetch(`${apiUrl}/api/v1/volunteer/me`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -56,6 +57,7 @@ document.querySelectorAll(".logout").forEach((element, index) => {
     try {
       const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -84,6 +86,7 @@ function formatDate(dateString) {
 function displayActivities() {
   fetch(`${apiUrl}/api/v1/volunteer/my-activities`, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -175,6 +178,7 @@ function displayActivities() {
 function leaveActivity(activityId) {
   fetch(`${apiUrl}/api/v1/volunteer/activity/${activityId}/leave`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },

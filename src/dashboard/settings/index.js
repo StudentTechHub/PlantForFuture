@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(`${apiUrl}/api/v1/${currentUser}/update-info`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -105,6 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(`${apiUrl}/api/v1/${currentUser}/me`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -158,6 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         const response = await fetch(`${apiUrl}/api/v1/volunteer/logout`, {
           method: "GET",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
