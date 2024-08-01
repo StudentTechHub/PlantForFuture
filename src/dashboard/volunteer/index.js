@@ -35,7 +35,9 @@ const displayUserData = (data) => {
   });
 };
 
-await fetchUserData();
+(async function () {
+  await fetchUserData();
+})();
 
 // Avatar dropdown
 avatarDiv.addEventListener("click", function () {

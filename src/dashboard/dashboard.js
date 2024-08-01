@@ -1,25 +1,45 @@
 // Authenticate Dashboard
 const apiUrl = import.meta.env.VITE_API_URL;
 
-let isLoggedIn = fetch(`${apiUrl}/api/v1/check_login`, {
-  method: "GET",
-  credentials: "include",
-})
-  .then((response) => response.json())
-  .then((data) => {
-    return data.loggedIn;
-  });
+document.addEventListener("DOMContentLoaded", async () => {
+  // Checking if the user is a volunteer or creator
+  const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
 
-if (!isLoggedIn) {
-  window.location.href = "/join-us/";
-}
+  const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
 
-// if (cookieObj["_creator_token"]) {
-//   window.location.href = "/src/dashboard/creator/";
-//   return;
-// }
+  const isLoggedIn = !!(creator || volunteer);
 
-// if (cookieObj["_volunteer_token"]) {
-//   window.location.href = "/src/dashboard/volunteer/";
-//   return;
-// }
+  if (!isLoggedIn) {
+    window.location.href = "/join-us/";
+  }
+
+  // if (cookieObj["_creator_token"]) {
+  //   window.location.href = "/src/dashboard/creator/";
+  //   return;
+  // }
+
+  // if (cookieObj["_volunteer_token"]) {
+  //   window.location.href = "/src/dashboard/volunteer/";
+  //   return;
+  // }
+});

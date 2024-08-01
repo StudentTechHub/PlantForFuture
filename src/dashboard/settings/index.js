@@ -3,14 +3,31 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Checking if the user is a volunteer or creator
-  const currentUser = await fetch(`${apiUrl}/api/v1/check_login`, {
+  const creator = await fetch(`${apiUrl}/api/v1/creator/check_login`, {
     method: "GET",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => response.json())
     .then((data) => {
       return data.userType;
     });
+
+  const volunteer = await fetch(`${apiUrl}/api/v1/volunteer/check_login`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data.userType;
+    });
+
+  const currentUser = creator || volunteer;
 
   // Routing to the user dashboard
   const userDashboard = document.getElementById("user-dashboard");
@@ -62,18 +79,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      const response = await fetch(`${apiUrl}/api/v1/${currentUser}/update-info`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: `${firstName} ${lastName}`,
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${apiUrl}/api/v1/${currentUser}/update-info`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: `${firstName} ${lastName}`,
+            email,
+            password,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
