@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        activities: resolve(__dirname, "src/dashboard/activities/index.html"),
         settings: resolve(__dirname, "src/dashboard/settings/index.html"),
         "join-us": resolve(__dirname, "join-us/index.html"),
         volunteer: resolve(__dirname, "src/dashboard/volunteer/index.html"),
